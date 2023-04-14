@@ -3,10 +3,10 @@ import Sidebar from './Sidebar'
 
 function Layout (props) {
   return (
-    <>
+    <div className='layout'>
       <Sidebar />
-      <div>{props.children}</div>
-    </>
+      <>{props.children}</>
+    </div>
   )
 }
 
