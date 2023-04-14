@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import ChampionIcon from '../components/ChampionIcon'
 
-function ChampionPool() {
+function ChampionPool () {
+  useEffect(() => {
+    document.title = 'Champion Pool | La Faille'
+  }, [])
+
   return (
-    <><h1>Champion Pool Page</h1></>
+    <div>
+      <h1>Champion Pool Page</h1>
+      <ChampionIcon name='aatrox' />
+    </div>
   )
 }
 
