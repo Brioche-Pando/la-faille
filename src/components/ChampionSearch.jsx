@@ -24,42 +24,76 @@ function ChampionSearch () {
     return true
   })
 
-  const handleRoleFilterClick = role => {
-    if (role === roleFilter) {
-      // Désactiver le filtre si on clique sur un filtre déjà actif
-      setRoleFilter(null)
-    } else {
-      // Activer le filtre si on clique sur un filtre inactif
-      setRoleFilter(role)
-    }
-  }
-
   return (
-    <div>
-      <div>
-        {/* Filtres par rôle */}
-        <button onClick={() => handleRoleFilterClick(null)}>Tous</button>
-        <button onClick={() => handleRoleFilterClick('Top')}>Top</button>
-        <button onClick={() => handleRoleFilterClick('Jungle')}>Jungle</button>
-        <button onClick={() => handleRoleFilterClick('Mid')}>Mid</button>
-        <button onClick={() => handleRoleFilterClick('ADC')}>ADC</button>
-        <button onClick={() => handleRoleFilterClick('Support')}>
-          Support
-        </button>
+    <div className='search'>
+      <div className='search__header'>
+        <div className='search__roles'>
+          {/* Filtres par rôle */}
+          <button
+            className={`search__role ${!roleFilter && 'search__role--active'}`}
+            onClick={() => setRoleFilter(null)}
+          >
+            Tous
+          </button>
+          <button
+            className={`search__role ${
+              roleFilter === 'Top' && 'search__role--active'
+            }`}
+            onClick={() => setRoleFilter('Top')}
+          >
+            Top
+          </button>
+          <button
+            className={`search__role ${
+              roleFilter === 'Jungle' && 'search__role--active'
+            }`}
+            onClick={() => setRoleFilter('Jungle')}
+          >
+            Jungle
+          </button>
+          <button
+            className={`search__role ${
+              roleFilter === 'Mid' && 'search__role--active'
+            }`}
+            onClick={() => setRoleFilter('Mid')}
+          >
+            Mid
+          </button>
+          <button
+            className={`search__role ${
+              roleFilter === 'ADC' && 'search__role--active'
+            }`}
+            onClick={() => setRoleFilter('ADC')}
+          >
+            ADC
+          </button>
+          <button
+            className={`search__role ${
+              roleFilter === 'Support' && 'search__role--active'
+            }`}
+            onClick={() => setRoleFilter('Support')}
+          >
+            Support
+          </button>
+        </div>
+        <div className='search__bar'>
+          {/* Barre de recherche */}
+          <input
+            type='text'
+            value={searchText}
+            onChange={event => setSearchText(event.target.value)}
+          />
+        </div>
       </div>
-      <div>
-        {/* Barre de recherche */}
-        <input
-          type='text'
-          value={searchText}
-          onChange={event => setSearchText(event.target.value)}
-        />
-      </div>
-      <div>
+      <div className='search__results'>
         {/* Afficher les champions filtrés */}
-        {filteredChampions.map((champion, index) => (
-          <ChampionIcon key={index} name={champion.slug} />
-        ))}
+        {filteredChampions.length ? (
+          filteredChampions.map((champion, index) => (
+            <ChampionIcon key={index} name={champion.slug} />
+          ))
+        ) : (
+          <p>Aucun champion ne correspond à votre recherche</p>
+        )}
       </div>
     </div>
   )
