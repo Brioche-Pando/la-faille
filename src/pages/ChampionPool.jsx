@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import ChampionIcon from '../components/ChampionIcon'
+import ChampionSearch from '../components/ChampionSearch'
 
 function ChampionPool () {
   useEffect(() => {
@@ -9,7 +9,7 @@ function ChampionPool () {
   return (
     <div>
       <h1>Champion Pool Page</h1>
-      <ChampionIcon name='aatrox' />
+      <ChampionSearch />
     </div>
   )
 }

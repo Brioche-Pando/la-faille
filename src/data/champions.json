@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Ashe",
+        "slug": "ashe",
+        "roles": [
+            "ADC"
+        ]
+    },
+    {
+        "name": "Blitzcrank",
+        "slug": "blitzcrank",
+        "roles": [
+            "Support"
+        ]
+    },
+    {
+        "name": "Caitlyn",
+        "slug": "caitlyn",
+        "roles": [
+            "ADC"
+        ]
+    },
+    {
+        "name": "Darius",
+        "slug": "darius",
+        "roles": [
+            "Top"
+        ]
+    },
+    {
+        "name": "Ekko",
+        "slug": "ekko",
+        "roles": [
+            "Mid",
+            "Jungle"
+        ]
+    }
+]
