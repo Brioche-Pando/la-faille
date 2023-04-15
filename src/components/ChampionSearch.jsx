@@ -3,7 +3,7 @@ import championData from '../data/champions.json'
 import ChampionIcon from './ChampionIcon'
 import RoleFilterButton from './RoleFilterButton'
 
-function ChampionSearch() {
+function ChampionSearch () {
   const [roleFilter, setRoleFilter] = useState(null)
   const [searchText, setSearchText] = useState('')
 
@@ -24,6 +24,10 @@ function ChampionSearch() {
 
     return true
   })
+
+  const handleDragStart = (event, championSlug) => {
+    event.dataTransfer.setData('championSlug', championSlug)
+  }
 
   return (
     <div className='search'>
@@ -70,7 +74,12 @@ function ChampionSearch() {
         {/* Afficher les champions filtrés */}
         {filteredChampions.length ? (
           filteredChampions.map((champion, index) => (
-            <ChampionIcon key={index} name={champion.slug} />
+            <ChampionIcon
+              key={index}
+              name={champion.slug}
+              draggable
+              onDragStart={event => handleDragStart(event, champion.slug)}
+            />
           ))
         ) : (
           <p>Aucun champion ne correspond à votre recherche</p>
@@ -80,4 +89,4 @@ function ChampionSearch() {
   )
 }
 
-export default ChampionSearch;
+export default ChampionSearch
