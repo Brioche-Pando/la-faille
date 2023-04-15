@@ -73,12 +73,12 @@ function ChampionSearch () {
       <div className='search__results'>
         {/* Afficher les champions filtrés */}
         {filteredChampions.length ? (
-          filteredChampions.map((champion, index) => (
+          filteredChampions.map(champion => (
             <ChampionIcon
-              key={index}
+              key={champion.slug+ '-search'}
               name={champion.slug}
               draggable
-              onDragStart={event => handleDragStart(event, champion.slug)}
+              onDragStart={e => handleDragStart(e, champion.slug)}
             />
           ))
         ) : (

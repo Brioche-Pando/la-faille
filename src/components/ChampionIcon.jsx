@@ -1,7 +1,18 @@
 import React from 'react'
 
 function ChampionIcon (props) {
-  return <img src={`../assets/champion_icon/${props.name}.png`} alt={props.name} />
+  const { name, id, draggable, onDragStart } = props
+
+  return (
+    <div
+      id={id}
+      className='champion-icon'
+      draggable={draggable}
+      onDragStart={onDragStart}
+    >
+      <img src={`../assets/champion_icon/${name}.png`} alt={name} />
+    </div>
+  )
 }
 
 export default ChampionIcon

@@ -1,4 +1,5 @@
 import React from 'react'
+import ChampionIcon from './ChampionIcon'
 
 function ChampionPoolTier (props) {
   const { tierName, champions, setChampions } = props
@@ -7,9 +8,12 @@ function ChampionPoolTier (props) {
     event.preventDefault()
     const championSlug = event.dataTransfer.getData('championSlug')
     const champion = champions.find(champion => champion.slug === championSlug)
-    if (champion) {
-      const newChampions = champions.filter(c => c.slug !== championSlug)
-      setChampions([...newChampions, { ...champion, tier: tierName }])
+    if (!champion) {
+      const newChampion = {
+        slug: championSlug,
+        tier: tierName
+      }
+      setChampions([...champions, newChampion])
     }
   }
 
@@ -33,12 +37,13 @@ function ChampionPoolTier (props) {
       onDragOver={handleDragOver}
     >
       <h2>{tierName}</h2>
-      <ul>
+      <ul style={{ minHeight: '150px', border: '1px solid black' }}>
         {champions
           .filter(c => c.tier === tierName)
           .map(champion => (
             <li key={champion.slug}>
               <ChampionIcon
+                key={champion.slug + '-tier'}
                 name={champion.slug}
                 draggable
                 onDragStart={e => handleDragStart(e, champion.slug)}
