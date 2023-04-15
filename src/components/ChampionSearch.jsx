@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import championData from '../data/champions.json'
 import ChampionIcon from './ChampionIcon'
+import RoleFilterButton from './RoleFilterButton'
 
-function ChampionSearch () {
+function ChampionSearch() {
   const [roleFilter, setRoleFilter] = useState(null)
   const [searchText, setSearchText] = useState('')
 
@@ -29,53 +30,33 @@ function ChampionSearch () {
       <div className='search__header'>
         <div className='search__roles'>
           {/* Filtres par rôle */}
-          <button
-            className={`search__role ${!roleFilter && 'search__role--active'}`}
-            onClick={() => setRoleFilter(null)}
-          >
-            Tous
-          </button>
-          <button
-            className={`search__role ${
-              roleFilter === 'Top' && 'search__role--active'
-            }`}
-            onClick={() => setRoleFilter('Top')}
-          >
-            Top
-          </button>
-          <button
-            className={`search__role ${
-              roleFilter === 'Jungle' && 'search__role--active'
-            }`}
-            onClick={() => setRoleFilter('Jungle')}
-          >
-            Jungle
-          </button>
-          <button
-            className={`search__role ${
-              roleFilter === 'Mid' && 'search__role--active'
-            }`}
-            onClick={() => setRoleFilter('Mid')}
-          >
-            Mid
-          </button>
-          <button
-            className={`search__role ${
-              roleFilter === 'ADC' && 'search__role--active'
-            }`}
-            onClick={() => setRoleFilter('ADC')}
-          >
-            ADC
-          </button>
-          <button
-            className={`search__role ${
-              roleFilter === 'Support' && 'search__role--active'
-            }`}
-            onClick={() => setRoleFilter('Support')}
-          >
-            Support
-          </button>
+          <RoleFilterButton
+            role='Top'
+            active={roleFilter === 'Top'}
+            handleClick={setRoleFilter}
+          />
+          <RoleFilterButton
+            role='Jungle'
+            active={roleFilter === 'Jungle'}
+            handleClick={setRoleFilter}
+          />
+          <RoleFilterButton
+            role='Mid'
+            active={roleFilter === 'Mid'}
+            handleClick={setRoleFilter}
+          />
+          <RoleFilterButton
+            role='ADC'
+            active={roleFilter === 'ADC'}
+            handleClick={setRoleFilter}
+          />
+          <RoleFilterButton
+            role='Support'
+            active={roleFilter === 'Support'}
+            handleClick={setRoleFilter}
+          />
         </div>
+
         <div className='search__bar'>
           {/* Barre de recherche */}
           <input
@@ -99,4 +80,4 @@ function ChampionSearch () {
   )
 }
 
-export default ChampionSearch
+export default ChampionSearch;
