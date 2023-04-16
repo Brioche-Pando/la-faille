@@ -1,33 +1,28 @@
 import React from 'react'
 import ChampionIcon from './ChampionIcon'
+import { useChampionContext } from '../store/StoreChampionPool'
 
 function ChampionPoolTier (props) {
-  const { tierName, champions, setChampions } = props
+  const { tierName } = props
+  const { champions, handleMoveChampion } = useChampionContext()
 
   const handleDrop = event => {
     event.preventDefault()
     const championSlug = event.dataTransfer.getData('championSlug')
-    const champion = champions.find(champion => champion.slug === championSlug)
-    if (!champion) {
-      const newChampion = {
-        slug: championSlug,
-        tier: tierName
-      }
-      setChampions([...champions, newChampion])
-    }
+    handleMoveChampion(championSlug, tierName)
   }
 
   const handleDragOver = event => {
     event.preventDefault()
+    const championTier = event.dataTransfer.getData('championTier')
+    if (championTier !== tierName) {
+      event.dataTransfer.dropEffect = 'move'
+    }
   }
 
-  const handleDragStart = (event, championSlug) => {
+  const handleDragStart = (event, championSlug, championTier) => {
     event.dataTransfer.setData('championSlug', championSlug)
-  }
-
-  const handleRemoveChampion = championSlug => {
-    const newChampions = champions.filter(c => c.slug !== championSlug)
-    setChampions(newChampions)
+    event.dataTransfer.setData('championTier', championTier)
   }
 
   return (
@@ -46,12 +41,11 @@ function ChampionPoolTier (props) {
                 key={champion.slug + '-tier'}
                 name={champion.slug}
                 draggable
-                onDragStart={e => handleDragStart(e, champion.slug)}
+                onDragStart={e =>
+                  handleDragStart(e, champion.slug, champion.tier)
+                }
               />
               <span>{champion.name}</span>
-              <button onClick={() => handleRemoveChampion(champion.slug)}>
-                Remove
-              </button>
             </li>
           ))}
       </ul>

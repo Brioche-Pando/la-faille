@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
+import { useChampionContext } from '../store/StoreChampionPool'
 import championData from '../data/champions.json'
 import ChampionIcon from './ChampionIcon'
 import RoleFilterButton from './RoleFilterButton'
 
 function ChampionSearch () {
+  const { handleMoveChampion } = useChampionContext()
+  const [searchChampions, setSearchChampions] = useState([])
   const [roleFilter, setRoleFilter] = useState(null)
   const [searchText, setSearchText] = useState('')
 
@@ -27,6 +30,17 @@ function ChampionSearch () {
 
   const handleDragStart = (event, championSlug) => {
     event.dataTransfer.setData('championSlug', championSlug)
+  }
+
+  const handleDrop = (event, tier) => {
+    event.preventDefault()
+    const championSlug = event.dataTransfer.getData('championSlug')
+    handleMoveChampion(championSlug, tier)
+    setSearchChampions(searchChampions.filter(c => c.slug !== championSlug))
+  }
+
+  const handleDragOver = event => {
+    event.preventDefault()
   }
 
   return (
@@ -74,12 +88,18 @@ function ChampionSearch () {
         {/* Afficher les champions filtrés */}
         {filteredChampions.length ? (
           filteredChampions.map(champion => (
-            <ChampionIcon
-              key={champion.slug+ '-search'}
-              name={champion.slug}
-              draggable
-              onDragStart={e => handleDragStart(e, champion.slug)}
-            />
+            <div
+              key={champion.slug + '-search'}
+              className='search__result'
+              onDragOver={handleDragOver}
+              onDrop={event => handleDrop(event, 'unranked')}
+            >
+              <ChampionIcon
+                name={champion.slug}
+                draggable
+                onDragStart={e => handleDragStart(e, champion.slug)}
+              />
+            </div>
           ))
         ) : (
           <p>Aucun champion ne correspond à votre recherche</p>

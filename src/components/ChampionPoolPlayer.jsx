@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import ChampionPoolTier from './ChampionPoolTier'
-import ChampionSearch from './ChampionSearch'
 
 function ChampionPoolPlayer (props) {
   const { roleIcon, playerName } = props
