@@ -1,15 +1,25 @@
 import React from 'react'
 import ChampionIcon from './ChampionIcon'
-import { useChampionContext } from '../store/StoreChampionPool'
 
 function ChampionPoolTier (props) {
-  const { tierName } = props
-  const { champions, handleMoveChampion } = useChampionContext()
+  const { tierName, champions, setChampions } = props
 
   const handleDrop = event => {
     event.preventDefault()
     const championSlug = event.dataTransfer.getData('championSlug')
-    handleMoveChampion(championSlug, tierName)
+    const champion = champions.find(champion => champion.slug === championSlug)
+    if (!champion) {
+      const newChampion = {
+        slug: championSlug,
+        tier: tierName
+      }
+      setChampions([...champions, newChampion])
+    } else if (champion.tier !== tierName) {
+      const updatedChampions = champions.map(c =>
+        c.slug === champion.slug ? { ...c, tier: tierName } : c
+      )
+      setChampions(updatedChampions)
+    }
   }
 
   const handleDragOver = event => {

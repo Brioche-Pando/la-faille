@@ -5,7 +5,6 @@ import Layout from './components/Layout'
 import Dashboard from './pages/Dashboard'
 import Champion_Pool from './pages/ChampionPool'
 import Match_Up from './pages/MatchUp'
-import { ChampionStoreProvider } from './store/StoreChampionPool'
 
 function App () {
   const router = createBrowserRouter([
@@ -20,11 +19,9 @@ function App () {
     {
       path: '/champion-pool',
       element: (
-        <ChampionStoreProvider>
-          <Layout>
-            <Champion_Pool />
-          </Layout>
-        </ChampionStoreProvider>
+        <Layout>
+          <Champion_Pool />
+        </Layout>
       )
     },
     {

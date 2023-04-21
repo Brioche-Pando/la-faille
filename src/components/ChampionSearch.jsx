@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
-import { useChampionContext } from '../store/StoreChampionPool'
 import championData from '../data/champions.json'
 import ChampionIcon from './ChampionIcon'
 import RoleFilterButton from './RoleFilterButton'
 
 function ChampionSearch () {
-  const { handleMoveChampion } = useChampionContext()
   const [searchChampions, setSearchChampions] = useState([])
   const [roleFilter, setRoleFilter] = useState(null)
   const [searchText, setSearchText] = useState('')
