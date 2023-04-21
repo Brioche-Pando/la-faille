@@ -1,7 +1,7 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
-import Layout from './components/Layout'
+import SidebarLayout from './layouts/SidebarLayout'
 import Dashboard from './pages/Dashboard'
 import Champion_Pool from './pages/ChampionPool'
 import Match_Up from './pages/MatchUp'
@@ -11,25 +11,25 @@ function App () {
     {
       path: '/',
       element: (
-        <Layout>
+        <SidebarLayout>
           <Dashboard />
-        </Layout>
+        </SidebarLayout>
       )
     },
     {
       path: '/champion-pool',
       element: (
-        <Layout>
+        <SidebarLayout>
           <Champion_Pool />
-        </Layout>
+        </SidebarLayout>
       )
     },
     {
       path: 'match-up',
       element: (
-        <Layout>
+        <SidebarLayout>
           <Match_Up />
-        </Layout>
+        </SidebarLayout>
       )
     }
   ])

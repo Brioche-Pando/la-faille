@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import championData from '../data/champions.json'
-import ChampionIcon from './ChampionIcon'
+import championData from '../../data/champions.json'
+import ChampionIcon from '../ChampionIcon'
 import RoleFilterButton from './RoleFilterButton'
 
 function ChampionSearch () {
@@ -33,7 +33,6 @@ function ChampionSearch () {
   const handleDrop = (event, tier) => {
     event.preventDefault()
     const championSlug = event.dataTransfer.getData('championSlug')
-    handleMoveChampion(championSlug, tier)
     setSearchChampions(searchChampions.filter(c => c.slug !== championSlug))
   }
 

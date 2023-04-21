@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import ChampionPoolPlayer from '../components/ChampionPoolPlayer'
-import ChampionSearch from '../components/ChampionSearch'
+import ChampionPoolPlayer from '../components/championPool/ChampionPoolPlayer'
+import ChampionSearch from '../components/championSearch/ChampionSearch'
 
 function ChampionPool () {
   useEffect(() => {

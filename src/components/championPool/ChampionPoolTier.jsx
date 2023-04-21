@@ -1,5 +1,5 @@
 import React from 'react'
-import ChampionIcon from './ChampionIcon'
+import ChampionIcon from '../ChampionIcon'
 
 function ChampionPoolTier (props) {
   const { tierName, champions, setChampions } = props
@@ -35,6 +35,11 @@ function ChampionPoolTier (props) {
     event.dataTransfer.setData('championTier', championTier)
   }
 
+  const handleRemoveChampion = championSlug => {
+    const newChampions = champions.filter(c => c.slug !== championSlug)
+    setChampions(newChampions)
+  }
+
   return (
     <div
       className='champion-pool-tier'
@@ -56,6 +61,9 @@ function ChampionPoolTier (props) {
                 }
               />
               <span>{champion.name}</span>
+              <button onClick={() => handleRemoveChampion(champion.slug)}>
+                Remove
+              </button>
             </li>
           ))}
       </ul>
