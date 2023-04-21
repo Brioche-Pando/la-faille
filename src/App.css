@@ -52,3 +52,14 @@
   grid-template-columns: auto 1fr;
   grid-template-areas: "sidebar content";
 }
+
+.sidebarlayout .sidebar {
+  height: 100vh;
+  grid-area: sidebar;
+  position: sticky;
+  top: 0;
+}
+
+.sidebarlayout .content {
+  grid-area: content;
+}
