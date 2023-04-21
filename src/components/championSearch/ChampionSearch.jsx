@@ -46,32 +46,31 @@ function ChampionSearch () {
         <div className='search__roles'>
           {/* Filtres par rôle */}
           <RoleFilterButton
-            role='Top'
-            active={roleFilter === 'Top'}
+            role='top'
+            active={roleFilter === 'top'}
             handleClick={setRoleFilter}
           />
           <RoleFilterButton
-            role='Jungle'
-            active={roleFilter === 'Jungle'}
+            role='jungle'
+            active={roleFilter === 'jungle'}
             handleClick={setRoleFilter}
           />
           <RoleFilterButton
-            role='Mid'
-            active={roleFilter === 'Mid'}
+            role='mid'
+            active={roleFilter === 'mid'}
             handleClick={setRoleFilter}
           />
           <RoleFilterButton
-            role='ADC'
-            active={roleFilter === 'ADC'}
+            role='adc'
+            active={roleFilter === 'adc'}
             handleClick={setRoleFilter}
           />
           <RoleFilterButton
-            role='Support'
-            active={roleFilter === 'Support'}
+            role='support'
+            active={roleFilter === 'support'}
             handleClick={setRoleFilter}
           />
         </div>
-
         <div className='search__bar'>
           {/* Barre de recherche */}
           <input
@@ -81,7 +80,10 @@ function ChampionSearch () {
           />
         </div>
       </div>
-      <div className='search__results'>
+      <div
+        className='search__results'
+        style={{ display: 'flex', flexWrap: 'wrap' }}
+      >
         {/* Afficher les champions filtrés */}
         {filteredChampions.length ? (
           filteredChampions.map(champion => (

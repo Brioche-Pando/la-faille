@@ -10,7 +10,7 @@ function ChampionIcon (props) {
       draggable={draggable}
       onDragStart={onDragStart}
     >
-      <img src={`../assets/champion_icon/${name}.png`} alt={name} />
+      <img src={`../assets/champion_icon/${name}.png`} alt={name} width={50}/>
     </div>
   )
 }
