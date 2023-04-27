@@ -6,20 +6,41 @@ function ChampionPoolTier (props) {
 
   const handleDrop = event => {
     event.preventDefault()
+    const championId = event.dataTransfer.getData('championId')
     const championSlug = event.dataTransfer.getData('championSlug')
-    const champion = champions.find(champion => champion.slug === championSlug)
-    if (!champion) {
+
+    const championAlreadyExist = champions.find(
+      champion => champion.slug === championSlug
+    )
+
+    // Si le champion n'est pas dans le champion pool
+    if (!championAlreadyExist) {
+      // Création du nouveau champion
       const newChampion = {
+        id: championId,
         slug: championSlug,
         tier: tierName
       }
+      // Ajout à la liste de champions
       setChampions([...champions, newChampion])
-    } else if (champion.tier !== tierName) {
-      const updatedChampions = champions.map(c =>
-        c.slug === champion.slug ? { ...c, tier: tierName } : c
+
+      // Si il est déjà dans le champion pool
+    } else if (championAlreadyExist.tier !== tierName) {
+      // Changement du tier du champion si besoin
+      const updatedChampions = champions.map(newChampion =>
+        newChampion.slug === championAlreadyExist.slug
+          ? { ...newChampion, tier: tierName }
+          : newChampion
       )
+      // Mise à jour de la liste de champions
       setChampions(updatedChampions)
     }
+  }
+
+  const handleDragStart = (event, championId, championSlug, championTier) => {
+    event.dataTransfer.setData('championId', championId)
+    event.dataTransfer.setData('championSlug', championSlug)
+    event.dataTransfer.setData('championTier', championTier)
   }
 
   const handleDragOver = event => {
@@ -30,14 +51,10 @@ function ChampionPoolTier (props) {
     }
   }
 
-  const handleDragStart = (event, championSlug, championTier) => {
-    event.dataTransfer.setData('championSlug', championSlug)
-    event.dataTransfer.setData('championTier', championTier)
-  }
-
-  const handleRemoveChampion = championSlug => {
-    const newChampions = champions.filter(c => c.slug !== championSlug)
-    setChampions(newChampions)
+  const handleRemoveChampion = championIdToRemove => {
+    setChampions(
+      champions.filter(champion => champion.id !== championIdToRemove)
+    )
   }
 
   return (
@@ -47,21 +64,27 @@ function ChampionPoolTier (props) {
       onDragOver={handleDragOver}
     >
       <h2>{tierName}</h2>
-      <ul style={{ minHeight: '150px', border: '1px solid black' }}>
+      <ul
+        style={{
+          minHeight: '150px',
+          minWidth: '450px',
+          border: '1px solid black'
+        }}
+      >
         {champions
           .filter(c => c.tier === tierName)
           .map(champion => (
             <li key={champion.slug}>
               <ChampionIcon
-                key={champion.slug + '-tier'}
+                id={champion.id}
                 name={champion.slug}
                 draggable
                 onDragStart={e =>
-                  handleDragStart(e, champion.slug, champion.tier)
+                  handleDragStart(e, champion.id, champion.slug, champion.tier)
                 }
               />
               <span>{champion.name}</span>
-              <button onClick={() => handleRemoveChampion(champion.slug)}>
+              <button onClick={() => handleRemoveChampion(champion.id)}>
                 Remove
               </button>
             </li>

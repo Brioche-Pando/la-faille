@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import ChampionPoolTier from './ChampionPoolTier'
 
 function ChampionPoolPlayer (props) {
-  const { roleIcon, playerName } = props
+  const { roleIcon, playerName, onUpdateChampions } = props
 
   const [champions, setChampions] = useState([])
 
   const handleSetChampions = newChampions => {
     setChampions(newChampions)
+    onUpdateChampions(newChampions)
   }
 
   return (

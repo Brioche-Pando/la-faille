@@ -1,7 +1,7 @@
 import React from 'react'
 
 function ChampionIcon (props) {
-  const { name, id, draggable, onDragStart } = props
+  const { id, name, draggable, onDragStart } = props
 
   return (
     <div
@@ -10,7 +10,7 @@ function ChampionIcon (props) {
       draggable={draggable}
       onDragStart={onDragStart}
     >
-      <img src={`../assets/champion_icon/${name}.png`} alt={name} width={50}/>
+      <img src={`../assets/champion_icon/${name}.png`} alt={name} width={50} />
     </div>
   )
 }

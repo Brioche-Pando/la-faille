@@ -4,7 +4,6 @@ import ChampionIcon from '../ChampionIcon'
 import RoleFilterButton from './RoleFilterButton'
 
 function ChampionSearch () {
-  const [searchChampions, setSearchChampions] = useState([])
   const [roleFilter, setRoleFilter] = useState(null)
   const [searchText, setSearchText] = useState('')
 
@@ -26,18 +25,9 @@ function ChampionSearch () {
     return true
   })
 
-  const handleDragStart = (event, championSlug) => {
+  const handleDragStart = (event, championId, championSlug) => {
+    event.dataTransfer.setData('championId', championId)
     event.dataTransfer.setData('championSlug', championSlug)
-  }
-
-  const handleDrop = (event, tier) => {
-    event.preventDefault()
-    const championSlug = event.dataTransfer.getData('championSlug')
-    setSearchChampions(searchChampions.filter(c => c.slug !== championSlug))
-  }
-
-  const handleDragOver = event => {
-    event.preventDefault()
   }
 
   return (
@@ -87,18 +77,13 @@ function ChampionSearch () {
         {/* Afficher les champions filtrés */}
         {filteredChampions.length ? (
           filteredChampions.map(champion => (
-            <div
-              key={champion.slug + '-search'}
-              className='search__result'
-              onDragOver={handleDragOver}
-              onDrop={event => handleDrop(event, 'unranked')}
-            >
-              <ChampionIcon
-                name={champion.slug}
-                draggable
-                onDragStart={e => handleDragStart(e, champion.slug)}
-              />
-            </div>
+            <ChampionIcon
+              key={champion.id}
+              id={champion.id}
+              name={champion.slug}
+              draggable
+              onDragStart={e => handleDragStart(e, champion.id, champion.slug)}
+            />
           ))
         ) : (
           <p>Aucun champion ne correspond à votre recherche</p>
