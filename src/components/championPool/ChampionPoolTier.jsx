@@ -14,9 +14,18 @@ function ChampionPoolTier ({
       const championId = event.dataTransfer.getData('championId')
       const championSlug = event.dataTransfer.getData('championSlug')
 
-      const championAlreadyExist = championPool[tierSlug].find(
-        champion => champion.slug === championSlug
-      )
+      let championAlreadyExist = false
+
+      for (const tierSlug in championPool) {
+        const championsInTier = championPool[tierSlug]
+        const foundChampion = championsInTier.find(
+          champion => champion.slug === championSlug
+        )
+        if (foundChampion) {
+          championAlreadyExist = foundChampion
+          break
+        }
+      }
 
       // Si le champion n'est pas dans le champion pool
       if (!championAlreadyExist) {
@@ -34,17 +43,22 @@ function ChampionPoolTier ({
 
         // Si il est déjà dans le champion pool
       } else if (championAlreadyExist.tier !== tierSlug) {
-        // Changement du tier du champion si besoin
-        const updatedChampions = championPool.map(newChampion =>
-          newChampion.slug === championAlreadyExist.slug
-            ? { ...newChampion, tier: tierSlug }
-            : newChampion
+        // Suppression du champion de son ancien tier
+        const oldChampions = championPool[championAlreadyExist.tier].filter(
+          champion => champion.slug !== championSlug
         )
-        // Mise à jour de la liste de champions
         const newChampionPool = {
           ...championPool,
-          [tierSlug]: updatedChampions
+          [championAlreadyExist.tier]: oldChampions
         }
+
+        // Changement du tier du champion
+        const updatedChampion = { ...championAlreadyExist, tier: tierSlug }
+
+        // Ajout du champion à son nouveau tier
+        const newChampions = [...championPool[tierSlug], updatedChampion]
+        newChampionPool[tierSlug] = newChampions
+
         setChampionPool(newChampionPool)
       }
     } else {
