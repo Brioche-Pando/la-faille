@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ChampionPoolTier from './ChampionPoolTier'
 import useLocalStorage from '../../hooks/useLocalStorage'
 
-function ChampionPoolPlayer ({ roleIcon, playerName, onUpdateChampions }) {
+function ChampionPoolPlayer ({ roleIcon, playerName, editable = false }) {
 
   const [championPool, setChampionPool] = useLocalStorage('championPool',{
     best_champions: [],
@@ -24,24 +24,28 @@ function ChampionPoolPlayer ({ roleIcon, playerName, onUpdateChampions }) {
             tierName='Meilleurs champions'
             championPool={championPool}
             setChampionPool={setChampionPool}
+            editable={editable}
           />
           <ChampionPoolTier
             tierSlug='match_ready'
             tierName='Prêts pour les matchs'
             championPool={championPool}
             setChampionPool={setChampionPool}
+            editable={editable}
           />
           <ChampionPoolTier
             tierSlug='scrim_ready'
             tierName='Prêts pour les scrims'
             championPool={championPool}
             setChampionPool={setChampionPool}
+            editable={editable}
           />
           <ChampionPoolTier
             tierSlug='training_required'
             tierName='Entraînement requis'
             championPool={championPool}
             setChampionPool={setChampionPool}
+            editable={editable}
           />
         </div>
       </div>

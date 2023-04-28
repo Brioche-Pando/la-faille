@@ -7,7 +7,7 @@ function ChampionPool () {
     <div>
       <h1>Champion Pool Page</h1>
       <div style={{ display: 'flex' }}>
-        <ChampionPoolPlayer />
+        <ChampionPoolPlayer editable={true} />
         <ChampionSearch />
       </div>
     </div>

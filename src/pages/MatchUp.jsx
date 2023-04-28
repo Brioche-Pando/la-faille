@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import ChampionPoolPlayer from '../components/championPool/ChampionPoolPlayer'
 
 function MatchUp () {
   useEffect(() => {
@@ -8,6 +9,7 @@ function MatchUp () {
   return (
     <>
       <h1>Match Up Page</h1>
+      <ChampionPoolPlayer />
     </>
   )
 }
