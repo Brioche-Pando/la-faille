@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ChampionIcon from '../ChampionIcon'
 
-function ChampionPoolTier (props) {
-  const { tierName, champions, setChampions } = props
-
+function ChampionPoolTier ({
+  tierSlug,
+  tierName,
+  championPool,
+  setChampionPool
+}) {
   const handleDrop = event => {
     event.preventDefault()
     const championId = event.dataTransfer.getData('championId')
     const championSlug = event.dataTransfer.getData('championSlug')
 
-    const championAlreadyExist = champions.find(
+    const championAlreadyExist = championPool[tierSlug].find(
       champion => champion.slug === championSlug
     )
 
@@ -19,21 +22,25 @@ function ChampionPoolTier (props) {
       const newChampion = {
         id: championId,
         slug: championSlug,
-        tier: tierName
+        tier: tierSlug
       }
+
       // Ajout à la liste de champions
-      setChampions([...champions, newChampion])
+      const newChampionTabs = [...championPool[tierSlug], newChampion]
+      const newChampionPool = { ...championPool, [tierSlug]: newChampionTabs }
+      setChampionPool(newChampionPool)
 
       // Si il est déjà dans le champion pool
-    } else if (championAlreadyExist.tier !== tierName) {
+    } else if (championAlreadyExist.tier !== tierSlug) {
       // Changement du tier du champion si besoin
-      const updatedChampions = champions.map(newChampion =>
+      const updatedChampions = championPool.map(newChampion =>
         newChampion.slug === championAlreadyExist.slug
-          ? { ...newChampion, tier: tierName }
+          ? { ...newChampion, tier: tierSlug }
           : newChampion
       )
       // Mise à jour de la liste de champions
-      setChampions(updatedChampions)
+      const newChampionPool = { ...championPool, [tierSlug]: updatedChampions }
+      setChampionPool(newChampionPool)
     }
   }
 
@@ -46,15 +53,19 @@ function ChampionPoolTier (props) {
   const handleDragOver = event => {
     event.preventDefault()
     const championTier = event.dataTransfer.getData('championTier')
-    if (championTier !== tierName) {
+    if (championTier !== tierSlug) {
       event.dataTransfer.dropEffect = 'move'
     }
   }
 
   const handleRemoveChampion = championIdToRemove => {
-    setChampions(
-      champions.filter(champion => champion.id !== championIdToRemove)
-    )
+    setChampionPool(prevChampionPool => {
+      const newChampionPool = { ...prevChampionPool }
+      newChampionPool[tierSlug] = prevChampionPool[tierSlug].filter(
+        champion => champion.id !== championIdToRemove
+      )
+      return newChampionPool
+    })
   }
 
   return (
@@ -67,28 +78,26 @@ function ChampionPoolTier (props) {
       <ul
         style={{
           minHeight: '150px',
-          minWidth: '450px',
+          minWidth: '250px',
           border: '1px solid black'
         }}
       >
-        {champions
-          .filter(c => c.tier === tierName)
-          .map(champion => (
-            <li key={champion.slug}>
-              <ChampionIcon
-                id={champion.id}
-                name={champion.slug}
-                draggable
-                onDragStart={e =>
-                  handleDragStart(e, champion.id, champion.slug, champion.tier)
-                }
-              />
-              <span>{champion.name}</span>
-              <button onClick={() => handleRemoveChampion(champion.id)}>
-                Remove
-              </button>
-            </li>
-          ))}
+        {championPool[tierSlug].map(champion => (
+          <li key={champion.slug}>
+            <ChampionIcon
+              id={champion.id}
+              name={champion.slug}
+              draggable
+              onDragStart={e =>
+                handleDragStart(e, champion.id, champion.slug, champion.tier)
+              }
+            />
+            <span>{champion.name}</span>
+            <button onClick={() => handleRemoveChampion(champion.id)}>
+              Remove
+            </button>
+          </li>
+        ))}
       </ul>
     </div>
   )

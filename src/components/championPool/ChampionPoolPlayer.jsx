@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import ChampionPoolTier from './ChampionPoolTier'
+import useLocalStorage from '../../hooks/useLocalStorage'
 
-function ChampionPoolPlayer (props) {
-  const { roleIcon, playerName, onUpdateChampions } = props
+function ChampionPoolPlayer ({ roleIcon, playerName, onUpdateChampions }) {
 
-  const [champions, setChampions] = useState([])
-
-  const handleSetChampions = newChampions => {
-    setChampions(newChampions)
-    onUpdateChampions(newChampions)
-  }
+  const [championPool, setChampionPool] = useLocalStorage('championPool',{
+    best_champions: [],
+    match_ready: [],
+    scrim_ready: [],
+    training_required: []
+  })
 
   return (
     <div className='champion-pool'>
@@ -20,24 +20,28 @@ function ChampionPoolPlayer (props) {
       <div className='champion-pool-body'>
         <div className='champion-pool-tiers'>
           <ChampionPoolTier
+            tierSlug='best_champions'
             tierName='Meilleurs champions'
-            champions={champions}
-            setChampions={handleSetChampions}
+            championPool={championPool}
+            setChampionPool={setChampionPool}
           />
           <ChampionPoolTier
+            tierSlug='match_ready'
             tierName='Prêts pour les matchs'
-            champions={champions}
-            setChampions={handleSetChampions}
+            championPool={championPool}
+            setChampionPool={setChampionPool}
           />
           <ChampionPoolTier
+            tierSlug='scrim_ready'
             tierName='Prêts pour les scrims'
-            champions={champions}
-            setChampions={handleSetChampions}
+            championPool={championPool}
+            setChampionPool={setChampionPool}
           />
           <ChampionPoolTier
+            tierSlug='training_required'
             tierName='Entraînement requis'
-            champions={champions}
-            setChampions={handleSetChampions}
+            championPool={championPool}
+            setChampionPool={setChampionPool}
           />
         </div>
       </div>
