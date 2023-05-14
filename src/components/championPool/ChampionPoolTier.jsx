@@ -6,7 +6,8 @@ function ChampionPoolTier ({
   tierName,
   championPool,
   setChampionPool,
-  editable
+  editable,
+  handleChampionSelect
 }) {
   const handleDrop = event => {
     if (editable) {
@@ -115,12 +116,12 @@ function ChampionPoolTier ({
         {championPool[tierSlug].map(champion => (
           <li key={champion.slug}>
             <ChampionIcon
-              id={champion.id}
-              name={champion.slug}
+              champion={champion}
               draggable={editable}
               onDragStart={e =>
                 handleDragStart(e, champion.id, champion.slug, champion.tier)
               }
+              onChampionSelect={handleChampionSelect}
             />
             <span>{champion.name}</span>
             {editable ? (

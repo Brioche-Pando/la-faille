@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import ChampionPoolPlayer from '../components/championPool/ChampionPoolPlayer'
+import ChampionPoolSingle from '../components/championPool/ChampionPoolSingle'
 import ChampionSearch from '../components/championSearch/ChampionSearch'
 
 function ChampionPool () {
@@ -7,7 +7,7 @@ function ChampionPool () {
     <div>
       <h1>Champion Pool Page</h1>
       <div style={{ display: 'flex' }}>
-        <ChampionPoolPlayer editable={true} />
+        <ChampionPoolSingle editable={true} />
         <ChampionSearch />
       </div>
     </div>
