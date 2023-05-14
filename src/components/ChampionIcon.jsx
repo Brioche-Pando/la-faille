@@ -12,13 +12,21 @@ function ChampionIcon ({
       className='champion-icon'
       draggable={draggable}
       onDragStart={onDragStart}
-      onClick={() => onChampionSelect(champion)}
     >
-      <img
-        src={`../src/assets/champion_icon/${champion.slug}.png`}
-        alt={champion.slug}
-        width={50}
-      />
+      {onChampionSelect ? (
+        <img
+          onClick={() => onChampionSelect(champion)}
+          src={`../src/assets/champion_icon/${champion.slug}.png`}
+          alt={champion.slug}
+          width={50}
+        />
+      ) : (
+        <img
+          src={`../src/assets/champion_icon/${champion.slug}.png`}
+          alt={champion.slug}
+          width={50}
+        />
+      )}
     </div>
   )
 }

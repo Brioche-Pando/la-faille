@@ -79,8 +79,7 @@ function ChampionSearch () {
           filteredChampions.map(champion => (
             <ChampionIcon
               key={champion.id}
-              id={champion.id}
-              name={champion.slug}
+              champion={champion}
               draggable
               onDragStart={e => handleDragStart(e, champion.id, champion.slug)}
             />
