@@ -16,7 +16,7 @@ function ChampionPoolSingle ({
   })
 
   return (
-    <div className='champion-pool'>
+    <div className='championpool'>
       <div className='championpool__header'>
         <img src={roleIcon} alt='Role Icon' />
         <h2>{playerName}</h2>

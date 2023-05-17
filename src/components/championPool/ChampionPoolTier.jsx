@@ -36,7 +36,7 @@ function ChampionPoolTier ({
           slug: championSlug,
           tier: tierSlug
         }
-
+        
         // Ajout à la liste de champions
         const newChampionTabs = [...championPool[tierSlug], newChampion]
         const newChampionPool = { ...championPool, [tierSlug]: newChampionTabs }
@@ -101,7 +101,7 @@ function ChampionPoolTier ({
 
   return (
     <div
-      className='champion-pool-tier'
+      className='championpool__tier'
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
@@ -114,7 +114,7 @@ function ChampionPoolTier ({
         }}
       >
         {championPool[tierSlug].map(champion => (
-          <li key={champion.slug}>
+          <li key={'championpool-' + champion.slug}>
             <ChampionIcon
               champion={champion}
               draggable={editable}

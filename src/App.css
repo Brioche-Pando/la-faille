@@ -63,3 +63,15 @@
 .sidebarlayout .content {
   grid-area: content;
 }
+
+.search-modal {
+  max-height: 100%;
+  position: absolute;
+  top: 0;
+  background-color: white;
+  overflow: auto;
+}
+
+.search-modal--hidden {
+  display: none;
+}

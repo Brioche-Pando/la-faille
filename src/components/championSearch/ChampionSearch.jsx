@@ -3,9 +3,9 @@ import championData from '../../data/champions.json'
 import ChampionIcon from '../ChampionIcon'
 import RoleFilterButton from './RoleFilterButton'
 
-function ChampionSearch () {
-  const [roleFilter, setRoleFilter] = useState(null)
-  const [searchText, setSearchText] = useState('')
+function ChampionSearch ({ isModal = false, handleChampionSelect = null }) {
+  const [roleFilter, setRoleFilter] = useState()
+  const [searchText, setSearchText] = useState()
 
   // Filtrer les champions en fonction des filtres actifs
   const filteredChampions = championData.filter(champion => {
@@ -33,34 +33,36 @@ function ChampionSearch () {
   return (
     <div className='search'>
       <div className='search__header'>
-        <div className='search__roles'>
-          {/* Filtres par rôle */}
-          <RoleFilterButton
-            role='top'
-            active={roleFilter === 'top'}
-            handleClick={setRoleFilter}
-          />
-          <RoleFilterButton
-            role='jungle'
-            active={roleFilter === 'jungle'}
-            handleClick={setRoleFilter}
-          />
-          <RoleFilterButton
-            role='mid'
-            active={roleFilter === 'mid'}
-            handleClick={setRoleFilter}
-          />
-          <RoleFilterButton
-            role='adc'
-            active={roleFilter === 'adc'}
-            handleClick={setRoleFilter}
-          />
-          <RoleFilterButton
-            role='support'
-            active={roleFilter === 'support'}
-            handleClick={setRoleFilter}
-          />
-        </div>
+        {!isModal && (
+          <div className='search__roles'>
+            {/* Filtres par rôle */}
+            <RoleFilterButton
+              role='top'
+              active={roleFilter === 'top'}
+              handleClick={setRoleFilter}
+            />
+            <RoleFilterButton
+              role='jungle'
+              active={roleFilter === 'jungle'}
+              handleClick={setRoleFilter}
+            />
+            <RoleFilterButton
+              role='mid'
+              active={roleFilter === 'mid'}
+              handleClick={setRoleFilter}
+            />
+            <RoleFilterButton
+              role='adc'
+              active={roleFilter === 'adc'}
+              handleClick={setRoleFilter}
+            />
+            <RoleFilterButton
+              role='support'
+              active={roleFilter === 'support'}
+              handleClick={setRoleFilter}
+            />
+          </div>
+        )}
         <div className='search__bar'>
           {/* Barre de recherche */}
           <input
@@ -82,6 +84,7 @@ function ChampionSearch () {
               champion={champion}
               draggable
               onDragStart={e => handleDragStart(e, champion.id, champion.slug)}
+              onChampionSelect={handleChampionSelect}
             />
           ))
         ) : (
