@@ -9,6 +9,9 @@ function Sidebar () {
             <Link to='/'>Home</Link>
           </li>
           <li>
+            <Link to='/compositions'>Compositions</Link>
+          </li>
+          <li>
             <Link to='/match-up'>Match Up</Link>
           </li>
           <li>

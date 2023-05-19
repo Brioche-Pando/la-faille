@@ -5,6 +5,8 @@ import SidebarLayout from './layouts/SidebarLayout'
 import Dashboard from './pages/Dashboard'
 import Champion_Pool from './pages/ChampionPool'
 import Match_Up from './pages/MatchUp'
+import Compositions from './pages/Compositions'
+import NewComposition from './pages/NewComposition'
 
 function App () {
   const router = createBrowserRouter([
@@ -29,6 +31,22 @@ function App () {
       element: (
         <SidebarLayout>
           <Match_Up />
+        </SidebarLayout>
+      )
+    },
+    {
+      path: '/compositions',
+      element: (
+        <SidebarLayout>
+          <Compositions />
+        </SidebarLayout>
+      )
+    },
+    {
+      path: '/compositions/create',
+      element: (
+        <SidebarLayout>
+          <NewComposition />
         </SidebarLayout>
       )
     }
