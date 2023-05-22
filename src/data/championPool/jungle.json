@@ -1,0 +1,55 @@
+{
+    "best_champions": [
+        {
+            "id": "13",
+            "slug": "belveth",
+            "tier": "best_champions"
+        },
+        {
+            "id": "38",
+            "slug": "graves",
+            "tier": "best_champions"
+        }
+    ],
+    "match_ready": [
+        {
+            "id": "145",
+            "slug": "viego",
+            "tier": "match_ready"
+        },
+        {
+            "id": "144",
+            "slug": "vi",
+            "tier": "match_ready"
+        },
+        {
+            "id": "46",
+            "slug": "jarvaniv",
+            "tier": "match_ready"
+        }
+    ],
+    "scrim_ready": [
+        {
+            "id": "107",
+            "slug": "rumble",
+            "tier": "scrim_ready"
+        },
+        {
+            "id": "110",
+            "slug": "sejuani",
+            "tier": "scrim_ready"
+        }
+    ],
+    "training_required": [
+        {
+            "id": "124",
+            "slug": "sylas",
+            "tier": "training_required"
+        },
+        {
+            "id": "137",
+            "slug": "udyr",
+            "tier": "training_required"
+        }
+    ]
+}

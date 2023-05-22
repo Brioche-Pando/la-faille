@@ -1,0 +1,50 @@
+{
+    "best_champions": [
+        {
+            "id": "48",
+            "slug": "jayce",
+            "tier": "best_champions"
+        },
+        {
+            "id": "162",
+            "slug": "zoe",
+            "tier": "best_champions"
+        }
+    ],
+    "match_ready": [
+        {
+            "id": "6",
+            "slug": "annie",
+            "tier": "match_ready"
+        },
+        {
+            "id": "69",
+            "slug": "lissandra",
+            "tier": "match_ready"
+        }
+    ],
+    "scrim_ready": [
+        {
+            "id": "65",
+            "slug": "leblanc",
+            "tier": "scrim_ready"
+        },
+        {
+            "id": "1",
+            "slug": "ahri",
+            "tier": "scrim_ready"
+        }
+    ],
+    "training_required": [
+        {
+            "id": "37",
+            "slug": "gragas",
+            "tier": "training_required"
+        },
+        {
+            "id": "10",
+            "slug": "aurelionsol",
+            "tier": "training_required"
+        }
+    ]
+}

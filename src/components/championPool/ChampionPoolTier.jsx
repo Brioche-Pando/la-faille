@@ -36,7 +36,7 @@ function ChampionPoolTier ({
           slug: championSlug,
           tier: tierSlug
         }
-        
+
         // Ajout à la liste de champions
         const newChampionTabs = [...championPool[tierSlug], newChampion]
         const newChampionPool = { ...championPool, [tierSlug]: newChampionTabs }
@@ -105,7 +105,7 @@ function ChampionPoolTier ({
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
-      <h2>{tierName}</h2>
+      <h4>{tierName}</h4>
       <ul
         style={{
           minHeight: '150px',

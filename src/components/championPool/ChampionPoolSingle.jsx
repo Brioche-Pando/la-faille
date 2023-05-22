@@ -4,8 +4,10 @@ import useLocalStorage from '../../hooks/useLocalStorage'
 
 function ChampionPoolSingle ({
   roleIcon,
-  playerName,
+  playerName = 'Pseudo',
   editable = false,
+  isChampionPoolPage = false,
+  championPoolLocal = false,
   handleChampionSelect = null
 }) {
   const [championPool, setChampionPool] = useLocalStorage('championPool', {
@@ -18,14 +20,20 @@ function ChampionPoolSingle ({
   return (
     <div className='championpool'>
       <div className='championpool__header'>
-        <img src={roleIcon} alt='Role Icon' />
-        <h2>{playerName}</h2>
+        {isChampionPoolPage ? (
+          <>
+            <img src={roleIcon} alt='Role Icon' />
+            <h2>{playerName}</h2>
+          </>
+        ) : (
+          <h2>Champion Pool</h2>
+        )}
       </div>
       <div className='championpool__tiers'>
         <ChampionPoolTier
           tierSlug='best_champions'
           tierName='Meilleurs champions'
-          championPool={championPool}
+          championPool={championPoolLocal ? championPoolLocal : championPool}
           setChampionPool={setChampionPool}
           editable={editable}
           handleChampionSelect={handleChampionSelect}
@@ -33,7 +41,7 @@ function ChampionPoolSingle ({
         <ChampionPoolTier
           tierSlug='match_ready'
           tierName='Prêts pour les matchs'
-          championPool={championPool}
+          championPool={championPoolLocal ? championPoolLocal : championPool}
           setChampionPool={setChampionPool}
           editable={editable}
           handleChampionSelect={handleChampionSelect}
@@ -41,7 +49,7 @@ function ChampionPoolSingle ({
         <ChampionPoolTier
           tierSlug='scrim_ready'
           tierName='Prêts pour les scrims'
-          championPool={championPool}
+          championPool={championPoolLocal ? championPoolLocal : championPool}
           setChampionPool={setChampionPool}
           editable={editable}
           handleChampionSelect={handleChampionSelect}
@@ -49,7 +57,7 @@ function ChampionPoolSingle ({
         <ChampionPoolTier
           tierSlug='training_required'
           tierName='Entraînement requis'
-          championPool={championPool}
+          championPool={championPoolLocal ? championPoolLocal : championPool}
           setChampionPool={setChampionPool}
           editable={editable}
           handleChampionSelect={handleChampionSelect}
