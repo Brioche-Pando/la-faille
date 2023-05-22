@@ -3,7 +3,7 @@ import championData from '../../data/champions.json'
 import ChampionIcon from '../ChampionIcon'
 import RoleFilterButton from './RoleFilterButton'
 
-function ChampionSearch ({ isModal = false, handleChampionSelect = null }) {
+function ChampionSearch ({ hasFilter = true, handleChampionSelect = null }) {
   const [roleFilter, setRoleFilter] = useState()
   const [searchText, setSearchText] = useState()
 
@@ -33,7 +33,7 @@ function ChampionSearch ({ isModal = false, handleChampionSelect = null }) {
   return (
     <div className='search'>
       <div className='search__header'>
-        {!isModal && (
+        {hasFilter && (
           <div className='search__roles'>
             {/* Filtres par rôle */}
             <RoleFilterButton

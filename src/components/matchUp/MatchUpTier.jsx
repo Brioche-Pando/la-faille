@@ -110,7 +110,7 @@ function MatchUpTier ({ tierSlug, tierName, selectedChampion }) {
           className='search-modal search-modal--hidden'
         >
           <ChampionSearch
-            isModal={true}
+            hasFilter={false}
             handleChampionSelect={handleAddChampion}
           />
         </div>

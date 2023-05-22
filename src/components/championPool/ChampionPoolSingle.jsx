@@ -20,7 +20,7 @@ function ChampionPoolSingle ({
   return (
     <div className='championpool'>
       <div className='championpool__header'>
-        {isChampionPoolPage ? (
+        {!isChampionPoolPage ? (
           <>
             <img src={roleIcon} alt='Role Icon' />
             <h2>{playerName}</h2>

@@ -35,6 +35,8 @@ const ValidationStep = ({ onPrevious, onComplete }) => {
 const NewComposition = () => {
   // Gestion de l'état local pour l'étape actuelle du stepper
   const [step, setStep] = useState(1)
+  const [picks, setPicks] = useState([])
+  const [bans, setBans] = useState()
 
   // Fonction pour passer à l'étape suivante
   const nextStep = () => {
@@ -46,14 +48,40 @@ const NewComposition = () => {
     setStep(step - 1)
   }
 
+  function handleSetPicks (role, pick) {
+    setPicks(prevState => {
+      return {
+        ...prevState,
+        [role]: {
+          pick: pick
+        }
+      }
+    })
+  }
+
+  function handleSetBans (pos, pick) {
+    setBans(prevState => {
+      return {
+        ...prevState,
+        [pos]: {
+          pick: pick
+        }
+      }
+    })
+  }
+
   return (
     <div>
       {/* Affichage de l'étape en cours */}
       <div>Step {step}</div>
 
       {/* Affichage du composant correspondant à l'étape actuelle */}
-      {step === 1 && <CompositionPicks onNext={nextStep} />}
-      {step === 2 && <CompositionBans onPrevious={previousStep} onNext={nextStep} />}
+      {step === 1 && (
+        <CompositionPicks onNext={nextStep} handleSetPicks={handleSetPicks} />
+      )}
+      {step === 2 && (
+        <CompositionBans onPrevious={previousStep} onNext={nextStep} handleSetBans={handleSetBans} />
+      )}
       {step === 3 && (
         <ValidationStep onPrevious={previousStep} onComplete={nextStep} />
       )}

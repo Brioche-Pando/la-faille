@@ -108,13 +108,16 @@ function ChampionPoolTier ({
       <h4>{tierName}</h4>
       <ul
         style={{
-          minHeight: '150px',
-          minWidth: '250px',
-          border: '1px solid black'
+          minHeight: '100px',
+          minWidth: '150px',
+          border: '1px solid black',
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '6px'
         }}
       >
         {championPool[tierSlug].map(champion => (
-          <li key={'championpool-' + champion.slug}>
+          <li key={'championpool-' + champion.slug} style={{listStyle: 'none'}}>
             <ChampionIcon
               champion={champion}
               draggable={editable}

@@ -6,7 +6,7 @@ import jungleChampionPool from '../../../data/championPool/jungle.json'
 import midChampionPool from '../../../data/championPool/mid.json'
 import adcChampionPool from '../../../data/championPool/adc.json'
 
-const CompositionPicks = ({ onNext }) => {
+const CompositionPicks = ({ onNext, handleSetPicks }) => {
   const lineUp = [
     {
       role: 'top',
@@ -30,8 +30,6 @@ const CompositionPicks = ({ onNext }) => {
     }
   ]
 
-  const [picks, setPicks] = useState([])
-  const [championPool, setChampionPool] = useState([])
 
   const handleNext = () => {
     onNext()
@@ -41,13 +39,14 @@ const CompositionPicks = ({ onNext }) => {
     <div>
       {/* Affichage des choix de picks */}
       <h2>Step 1: Choose Picks</h2>
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: 'flex', gap: '20px' }}>
         {lineUp.map(player => (
           <div key={player.role}>
             {/* CompositionSinglePick pour chaque poste */}
             <CompositionSinglePick
-              roleIcon={player.role}
-              rolePlayer={player.role}
+              role={player.role}
+              pseudoPlayer={player.role}
+              handleSetPicks={handleSetPicks}
             />
 
             {/* ChampionPoolSingle pour chaque poste */}

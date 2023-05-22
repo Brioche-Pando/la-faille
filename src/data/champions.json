@@ -698,6 +698,7 @@
         "name": "Nautilus",
         "slug": "nautilus",
         "roles": [
+            "mid",
             "support"
         ]
     },
@@ -965,9 +966,7 @@
         "name": "Singed",
         "slug": "singed",
         "roles": [
-            "top",
-            "mid",
-            "support"
+            "top"
         ]
     },
     {
