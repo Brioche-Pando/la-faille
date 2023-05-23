@@ -6,6 +6,7 @@ function ChampionIcon ({
   onDragStart = null,
   onChampionSelect = null
 }) {
+  console.log(champion);
   return (
     <div
       id={champion.id}

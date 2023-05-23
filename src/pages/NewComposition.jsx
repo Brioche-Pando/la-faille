@@ -10,6 +10,10 @@ const NewComposition = () => {
   const [picks, setPicks] = useState([])
   const [bans, setBans] = useState([])
 
+  useEffect(() => {
+    document.title = 'Nouvelle Composition | La Faille'
+  }, [])
+
   // Fonction pour passer à l'étape suivante
   const nextStep = () => {
     setStep(step + 1)

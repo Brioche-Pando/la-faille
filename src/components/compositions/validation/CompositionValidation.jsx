@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import useLocalStorage from '../../../hooks/useLocalStorage'
+import { redirect } from "react-router-dom";
 
 function CompositionValidation ({ onPrevious, picks, bans }) {
   const [compositionName, setCompositionName] = useState('')
@@ -33,7 +34,7 @@ function CompositionValidation ({ onPrevious, picks, bans }) {
     })
 
     // Redirection vers la page des compositions
-    // return <Redirect to='/compositions' />
+    return redirect("/compositions");
   }
 
   // Génère un ID unique pour la composition (à titre d'exemple)
