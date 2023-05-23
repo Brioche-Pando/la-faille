@@ -30,11 +30,11 @@ function Compositions () {
               <h3>{composition[1].name}</h3>
               PICK
               {Object.entries(composition[1].picks).map(pick => (
-                <ChampionIcon champion={pick[1].pick} />
+                <ChampionIcon key={pick[0]} champion={pick[1].pick}/>
               ))}
               BAN
               {Object.entries(composition[1].bans).map(ban => (
-                <ChampionIcon champion={ban[1].ban} />
+                <ChampionIcon key={ban[0]} champion={ban[1].ban} />
               ))}
             </div>
           ))}

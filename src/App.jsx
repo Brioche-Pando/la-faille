@@ -2,6 +2,7 @@ import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
 import SidebarLayout from './layouts/SidebarLayout'
+import FullScreenLayout from './layouts/FullScreenLayout'
 import Dashboard from './pages/Dashboard'
 import Champion_Pool from './pages/ChampionPool'
 import Match_Up from './pages/MatchUp'
@@ -45,9 +46,9 @@ function App () {
     {
       path: '/compositions/create',
       element: (
-        <SidebarLayout>
+        <FullScreenLayout>
           <NewComposition />
-        </SidebarLayout>
+        </FullScreenLayout>
       )
     }
   ])
