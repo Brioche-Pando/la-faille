@@ -1,18 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ChampionSearch from '../../championSearch/ChampionSearch'
 
-const CompositionSinglePick = ({ role, pseudoPlayer = 'Pseudo', handleSetPicks }) => {
+const CompositionSinglePick = ({
+  role,
+  pseudoPlayer = 'Pseudo',
+  picks,
+  handleSetPick = null,
+  isPreview = false
+}) => {
   const [selectedChampion, setSelectedChampion] = useState()
 
+  useEffect(() => {
+    // Vérifier si un pick a déjà été fait pour le poste et le mettre à jour dans selectedChampion
+    if (picks && picks[role] && picks[role].pick) {
+      setSelectedChampion(picks[role].pick)
+    }
+  }, [picks[role]])
+
   function handleAddChampion (champion) {
-    document.getElementById('modal-' + role).classList.toggle('search-modal--hidden')
+    document
+      .getElementById('modal-' + role)
+      .classList.toggle('search-modal--hidden')
     setSelectedChampion(champion)
-    handleSetPicks(role, champion)
+    handleSetPick(role, champion)
   }
 
   return (
     <div>
-      {/* Icône du poste du joueur */}
+      {isPreview && <p>Rappel des picks</p>}
       <figure
         style={{
           display: 'flex',
@@ -66,14 +81,11 @@ const CompositionSinglePick = ({ role, pseudoPlayer = 'Pseudo', handleSetPicks }
             : 'Sélectionner un champion'}
         </figcaption>
       </figure>
-      <div
-        id={'modal-' + role}
-        className='search-modal search-modal--hidden'
-      >
-        <ChampionSearch
-          handleChampionSelect={handleAddChampion}
-        />
-      </div>
+      {isPreview || (
+        <div id={'modal-' + role} className='search-modal search-modal--hidden'>
+          <ChampionSearch handleChampionSelect={handleAddChampion} />
+        </div>
+      )}
     </div>
   )
 }

@@ -3,7 +3,7 @@ import ChampionSearch from '../championSearch/ChampionSearch'
 import useLocalStorage from '../../hooks/useLocalStorage'
 import ChampionIcon from '../ChampionIcon'
 
-function MatchUpTier ({ tierSlug, tierName, selectedChampion }) {
+function MatchUpTier ({ tierSlug, tierName, selectedChampion, isPreview }) {
   const [matchUpPool, setMatchUpPool] = useLocalStorage('matchUpPool', {
     selectedChampion: {
       weak_against: [],
@@ -67,42 +67,55 @@ function MatchUpTier ({ tierSlug, tierName, selectedChampion }) {
     <div className='matchup__tier'>
       <div style={{ display: 'flex' }}>
         <h3>{tierName}</h3>
-        <button
-          onClick={() => {
-            document
-              .getElementById('modal-' + tierSlug)
-              .classList.toggle('search-modal--hidden')
-          }}
-        >
-          +
-        </button>
+        {isPreview || (
+          <button
+            onClick={() => {
+              document
+                .getElementById('modal-' + tierSlug)
+                .classList.toggle('search-modal--hidden')
+            }}
+          >
+            +
+          </button>
+        )}
       </div>
       <div className='matchup__content' style={{ position: 'relative' }}>
         <ul
           style={{
-            minHeight: '150px',
-            minWidth: '250px',
-            border: '1px solid black'
+            minHeight: '100px',
+            minWidth: '150px',
+            border: '1px solid black',
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '6px'
           }}
         >
           {selectedChampion ? (
             matchUpPool[selectedChampion.slug] ? (
               matchUpPool[selectedChampion.slug][tierSlug].map(champion => (
-                <li key={'matchuppool-' + champion.slug}>
-                  <ChampionIcon
-                    champion={champion}
-                  />
+                <li
+                  key={'matchuppool-' + champion.slug}
+                  style={{ listStyle: 'none' }}
+                >
+                  <ChampionIcon champion={champion} />
                   <span>{champion.name}</span>
-                  <button onClick={() => handleRemoveChampion(champion)}>
-                    Remove
-                  </button>
+
+                  {isPreview || (
+                    <button onClick={() => handleRemoveChampion(champion)}>
+                      Remove
+                    </button>
+                  )}
                 </li>
               ))
             ) : (
-              <li>Aucun champion n'a été ajouté pour le moment</li>
+              <li style={{ listStyle: 'none' }}>
+                Aucun champion n'a été renseigné dans ce tier pour le moment
+              </li>
             )
           ) : (
-            <li>Aucun champion n'est sélectionné pour le moment</li>
+            <li style={{ listStyle: 'none' }}>
+              Aucun champion n'est sélectionné pour le moment
+            </li>
           )}
         </ul>
         <div

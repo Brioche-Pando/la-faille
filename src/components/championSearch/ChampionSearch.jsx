@@ -5,7 +5,7 @@ import RoleFilterButton from './RoleFilterButton'
 
 function ChampionSearch ({ hasFilter = true, handleChampionSelect = null }) {
   const [roleFilter, setRoleFilter] = useState()
-  const [searchText, setSearchText] = useState()
+  const [searchText, setSearchText] = useState('')
 
   // Filtrer les champions en fonction des filtres actifs
   const filteredChampions = championData.filter(champion => {

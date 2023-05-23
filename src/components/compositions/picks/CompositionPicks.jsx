@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import CompositionSinglePick from './CompositionSinglePick'
-import ChampionPoolSingle from '../../championPool/ChampionPoolSingle'
-import topChampionPool from '../../../data/championPool/top.json'
-import jungleChampionPool from '../../../data/championPool/jungle.json'
-import midChampionPool from '../../../data/championPool/mid.json'
-import adcChampionPool from '../../../data/championPool/adc.json'
+import React, { useState } from 'react';
+import CompositionSinglePick from './CompositionSinglePick';
+import ChampionPoolSingle from '../../championPool/ChampionPoolSingle';
+import topChampionPool from '../../../data/championPool/top.json';
+import jungleChampionPool from '../../../data/championPool/jungle.json';
+import midChampionPool from '../../../data/championPool/mid.json';
+import adcChampionPool from '../../../data/championPool/adc.json';
 
-const CompositionPicks = ({ onNext, handleSetPicks }) => {
+const CompositionPicks = ({ onNext, picks, handleSetPick }) => {
   const lineUp = [
     {
       role: 'top',
@@ -28,12 +28,11 @@ const CompositionPicks = ({ onNext, handleSetPicks }) => {
       role: 'support',
       championPool: false
     }
-  ]
+  ];
 
-
-  const handleNext = () => {
-    onNext()
-  }
+  const handlePickSelection = (role, pick) => {
+    handleSetPick(role, pick);
+  };
 
   return (
     <div>
@@ -46,7 +45,8 @@ const CompositionPicks = ({ onNext, handleSetPicks }) => {
             <CompositionSinglePick
               role={player.role}
               pseudoPlayer={player.role}
-              handleSetPicks={handleSetPicks}
+              picks={picks}
+              handleSetPick={handlePickSelection}
             />
 
             {/* ChampionPoolSingle pour chaque poste */}
@@ -61,9 +61,9 @@ const CompositionPicks = ({ onNext, handleSetPicks }) => {
 
       {/* Bouton pour passer à l'étape suivante */}
       <a href='/compositions'>quitter</a>
-      <button onClick={handleNext}>suivant</button>
+      <button onClick={onNext} disabled={Object.keys(picks).length < 5}>suivant</button>
     </div>
-  )
-}
+  );
+};
 
-export default CompositionPicks
+export default CompositionPicks;
