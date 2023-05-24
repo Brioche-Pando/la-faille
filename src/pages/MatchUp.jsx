@@ -14,13 +14,10 @@ function MatchUp () {
   }, [])
 
   return (
-    <>
-      <h1>Match Up Page</h1>
-      <div style={{ display: 'flex' }}>
-        <ChampionPoolSingle handleChampionSelect={handleChampionSelect} />
-        <MatchUpSingle selectedChampion={selectedChampion} />
-      </div>
-    </>
+    <div className='content-1x1'>
+      <ChampionPoolSingle handleChampionSelect={handleChampionSelect} />
+      <MatchUpSingle selectedChampion={selectedChampion} />
+    </div>
   )
 }
 

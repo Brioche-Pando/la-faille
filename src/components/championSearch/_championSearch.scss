@@ -1,0 +1,7 @@
+.champion-search {
+    max-height: 850px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background-color: $white;
+    box-shadow: $shadow_1;
+}

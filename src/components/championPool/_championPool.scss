@@ -1,5 +1,5 @@
 .champion-pool {
-    max-height: 850px;
+    height: min(850px, 100%);
     padding-top: 8px;
     display: grid;
     grid-template-rows: auto 1fr 1fr 1fr 1fr;
