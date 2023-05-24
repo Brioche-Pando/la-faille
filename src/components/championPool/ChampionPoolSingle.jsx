@@ -22,11 +22,14 @@ function ChampionPoolSingle ({
       <div className='championpool__header'>
         {!isChampionPoolPage ? (
           <>
-            <img src={roleIcon} alt='Role Icon' />
-            <h2>{playerName}</h2>
+            <img
+              src={'src/assets/img/role_icons/' + roleIcon + '.svg'}
+              alt='Role Icon'
+            />
+            <h3>{playerName}</h3>
           </>
         ) : (
-          <h2>Champion Pool</h2>
+          <h3>Champion Pool</h3>
         )}
       </div>
       <div className='championpool__tiers'>

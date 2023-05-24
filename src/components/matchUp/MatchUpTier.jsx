@@ -1,7 +1,7 @@
 import React from 'react'
 import ChampionSearch from '../championSearch/ChampionSearch'
 import useLocalStorage from '../../hooks/useLocalStorage'
-import ChampionIcon from '../ChampionIcon'
+import ChampionIcon from '../championIcon/ChampionIcon'
 
 function MatchUpTier ({ tierSlug, tierName, selectedChampion, isPreview }) {
   const [matchUpPool, setMatchUpPool] = useLocalStorage('matchUpPool', {

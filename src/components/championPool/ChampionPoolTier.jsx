@@ -1,5 +1,5 @@
 import React from 'react'
-import ChampionIcon from '../ChampionIcon'
+import ChampionIcon from '../championIcon/ChampionIcon'
 
 function ChampionPoolTier ({
   tierSlug,
@@ -105,7 +105,7 @@ function ChampionPoolTier ({
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
-      <h4>{tierName}</h4>
+      <p>{tierName}</p>
       <ul
         style={{
           minHeight: '100px',
@@ -116,26 +116,36 @@ function ChampionPoolTier ({
           gap: '6px'
         }}
       >
-        {championPool[tierSlug].map(champion => (
-          <li key={'championpool-' + champion.slug} style={{listStyle: 'none'}}>
-            <ChampionIcon
-              champion={champion}
-              draggable={editable}
-              onDragStart={e =>
-                handleDragStart(e, champion.id, champion.slug, champion.tier)
-              }
-              onChampionSelect={handleChampionSelect}
-            />
-            <span>{champion.name}</span>
-            {editable ? (
-              <button onClick={() => handleRemoveChampion(champion.id)}>
-                Remove
-              </button>
-            ) : (
-              ''
-            )}
+        {championPool[tierSlug].length ? (
+          championPool[tierSlug].map(champion => (
+            <li
+              key={'championpool-' + champion.slug}
+              style={{ listStyle: 'none' }}
+            >
+              <ChampionIcon
+                champion={champion}
+                draggable={editable}
+                onDragStart={e =>
+                  handleDragStart(e, champion.id, champion.slug, champion.tier)
+                }
+                onChampionSelect={handleChampionSelect}
+              />
+              <span>{champion.name}</span>
+              {editable ? (
+                <button onClick={() => handleRemoveChampion(champion.id)}>
+                  Remove
+                </button>
+              ) : (
+                ''
+              )}
+            </li>
+          ))
+        ) : (
+          <li>
+            <img src="" alt="" />
+            <p>Glisser-déposer vos champions dans cette catégorie</p>
           </li>
-        ))}
+        )}
       </ul>
     </div>
   )

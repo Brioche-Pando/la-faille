@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
 import SidebarLayout from './layouts/SidebarLayout'
 import FullScreenLayout from './layouts/FullScreenLayout'
-import Dashboard from './pages/Dashboard'
+import Home from './pages/Home'
 import Champion_Pool from './pages/ChampionPool'
 import Match_Up from './pages/MatchUp'
 import Compositions from './pages/Compositions'
@@ -15,7 +15,7 @@ function App () {
       path: '/',
       element: (
         <SidebarLayout>
-          <Dashboard />
+          <Home />
         </SidebarLayout>
       )
     },
@@ -53,11 +53,7 @@ function App () {
     }
   ])
 
-  return (
-    <div className='App'>
-      <RouterProvider router={router} />
-    </div>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App

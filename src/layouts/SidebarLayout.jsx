@@ -3,7 +3,7 @@ import Sidebar from '../components/sidebar/Sidebar'
 
 function SidebarLayout (props) {
   return (
-    <div className='sidebarlayout'>
+    <div className='sidebar-layout'>
       <Sidebar />
       <div className='content'>{props.children}</div>
     </div>

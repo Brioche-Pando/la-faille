@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import championData from '../../data/champions.json'
-import ChampionIcon from '../ChampionIcon'
-import RoleFilterButton from './RoleFilterButton'
+import ChampionIcon from '../championIcon/ChampionIcon'
+import RoleButton from '../roleButton/RoleButton'
 
 function ChampionSearch ({ hasFilter = true, handleChampionSelect = null }) {
   const [roleFilter, setRoleFilter] = useState()
   const [searchText, setSearchText] = useState('')
+
+  const roles = ['top', 'jungle', 'mid', 'adc', 'support']
 
   // Filtrer les champions en fonction des filtres actifs
   const filteredChampions = championData.filter(champion => {
@@ -35,32 +37,14 @@ function ChampionSearch ({ hasFilter = true, handleChampionSelect = null }) {
       <div className='search__header'>
         {hasFilter && (
           <div className='search__roles'>
-            {/* Filtres par rôle */}
-            <RoleFilterButton
-              role='top'
-              active={roleFilter === 'top'}
-              handleClick={setRoleFilter}
-            />
-            <RoleFilterButton
-              role='jungle'
-              active={roleFilter === 'jungle'}
-              handleClick={setRoleFilter}
-            />
-            <RoleFilterButton
-              role='mid'
-              active={roleFilter === 'mid'}
-              handleClick={setRoleFilter}
-            />
-            <RoleFilterButton
-              role='adc'
-              active={roleFilter === 'adc'}
-              handleClick={setRoleFilter}
-            />
-            <RoleFilterButton
-              role='support'
-              active={roleFilter === 'support'}
-              handleClick={setRoleFilter}
-            />
+            {roles.map(role => (
+              <RoleButton
+                key={role}
+                role={role}
+                active={roleFilter === role}
+                handleClick={setRoleFilter}
+              />
+            ))}
           </div>
         )}
         <div className='search__bar'>

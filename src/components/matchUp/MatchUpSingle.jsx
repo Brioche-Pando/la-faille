@@ -1,6 +1,6 @@
 import React from 'react'
-import ChampionIcon from '../ChampionIcon'
 import MatchUpTier from './MatchUpTier'
+import ChampionIcon from '../championIcon/ChampionIcon'
 
 function MatchUpSingle ({ selectedChampion, isPreview = false }) {
   return (

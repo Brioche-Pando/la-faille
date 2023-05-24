@@ -7,7 +7,7 @@ function ChampionIcon ({
   onChampionSelect = null
 }) {
   return (
-    <div
+    <figure
       id={champion.id}
       className='champion-icon'
       draggable={draggable}
@@ -18,16 +18,16 @@ function ChampionIcon ({
           onClick={() => onChampionSelect(champion)}
           src={`../src/assets/champion_icon/${champion.slug}.png`}
           alt={champion.slug}
-          width={50}
+          className='champion-icon__img'
         />
       ) : (
         <img
           src={`../src/assets/champion_icon/${champion.slug}.png`}
           alt={champion.slug}
-          width={50}
+          className='champion-icon__img'
         />
       )}
-    </div>
+    </figure>
   )
 }
 

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import useLocalStorage from '../hooks/useLocalStorage'
-import ChampionIcon from '../components/ChampionIcon'
+import ChampionIcon from '../components/championIcon/ChampionIcon'
 
 function Compositions () {
   // Récupérer les compositions depuis le localStorage
@@ -23,10 +23,12 @@ function Compositions () {
       ) : (
         <ul>
           <li>
-
+            <h3>Nom</h3>
+            <h3>Picks</h3>
+            <h3>Bans</h3>
           </li>
           {Object.entries(storedCompositions).map(composition => (
-            <div key={composition[0]}>
+            <li key={composition[0]}>
               <h3>{composition[1].name}</h3>
               PICK
               {Object.entries(composition[1].picks).map(pick => (
@@ -36,7 +38,7 @@ function Compositions () {
               {Object.entries(composition[1].bans).map(ban => (
                 <ChampionIcon key={ban[0]} champion={ban[1].ban} />
               ))}
-            </div>
+            </li>
           ))}
         </ul>
       )}
