@@ -18,8 +18,8 @@ function ChampionPoolSingle ({
   })
 
   return (
-    <div className='championpool'>
-      <div className='championpool__header'>
+    <div className='champion-pool'>
+      <div className='champion-pool__header'>
         {!isChampionPoolPage ? (
           <>
             <img
@@ -32,40 +32,38 @@ function ChampionPoolSingle ({
           <h3>Champion Pool</h3>
         )}
       </div>
-      <div className='championpool__tiers'>
-        <ChampionPoolTier
-          tierSlug='best_champions'
-          tierName='Meilleurs champions'
-          championPool={championPoolLocal ? championPoolLocal : championPool}
-          setChampionPool={setChampionPool}
-          editable={editable}
-          handleChampionSelect={handleChampionSelect}
-        />
-        <ChampionPoolTier
-          tierSlug='match_ready'
-          tierName='Prêts pour les matchs'
-          championPool={championPoolLocal ? championPoolLocal : championPool}
-          setChampionPool={setChampionPool}
-          editable={editable}
-          handleChampionSelect={handleChampionSelect}
-        />
-        <ChampionPoolTier
-          tierSlug='scrim_ready'
-          tierName='Prêts pour les scrims'
-          championPool={championPoolLocal ? championPoolLocal : championPool}
-          setChampionPool={setChampionPool}
-          editable={editable}
-          handleChampionSelect={handleChampionSelect}
-        />
-        <ChampionPoolTier
-          tierSlug='training_required'
-          tierName='Entraînement requis'
-          championPool={championPoolLocal ? championPoolLocal : championPool}
-          setChampionPool={setChampionPool}
-          editable={editable}
-          handleChampionSelect={handleChampionSelect}
-        />
-      </div>
+      <ChampionPoolTier
+        tierSlug='best_champions'
+        tierName='Meilleurs champions'
+        championPool={championPoolLocal ? championPoolLocal : championPool}
+        setChampionPool={setChampionPool}
+        editable={editable}
+        handleChampionSelect={handleChampionSelect}
+      />
+      <ChampionPoolTier
+        tierSlug='match_ready'
+        tierName='Prêts pour les matchs'
+        championPool={championPoolLocal ? championPoolLocal : championPool}
+        setChampionPool={setChampionPool}
+        editable={editable}
+        handleChampionSelect={handleChampionSelect}
+      />
+      <ChampionPoolTier
+        tierSlug='scrim_ready'
+        tierName='Prêts pour les scrims'
+        championPool={championPoolLocal ? championPoolLocal : championPool}
+        setChampionPool={setChampionPool}
+        editable={editable}
+        handleChampionSelect={handleChampionSelect}
+      />
+      <ChampionPoolTier
+        tierSlug='training_required'
+        tierName='Entraînement requis'
+        championPool={championPoolLocal ? championPoolLocal : championPool}
+        setChampionPool={setChampionPool}
+        editable={editable}
+        handleChampionSelect={handleChampionSelect}
+      />
     </div>
   )
 }

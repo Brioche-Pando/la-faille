@@ -1,23 +1,21 @@
 /*
  * Colors
  */
-$color_white: #fafafa; // (White)
-$color_black: #010a13; // (Black)
+$white: #fafafa; // (White)
+$black: #010a13; // (Black)
 
-$color_primary: #ead8b3; // (Gold)
-$color_primary-400: #A37D2E; // (Gold - )
+$primary: #ead8b3; // (Gold)
+$primary-400: #A37D2E; // (Gold - )
 
-// border-image-source: linear-gradient(90deg, #CDFAFA 0%, #785A28 0.01%, #C89B3C 100%);
+$secondary: #0a323c; // (Blue)
 
-
-
-$color_secondary: #0a323c; // (Blue)
-
-$color_white_background: #EFF0F1; // (Dark Grey)
-$color_dark_background: #222426; // (Dark Grey)
+$white_background: #EFF0F1; // (Dark Grey)
+$dark_background: #222426; // (Dark Grey)
 
 $navi: #838383;
 $back_overlay: rgba(0, 0, 0, 0.6);
+
+$error: #FF442E; // (Red alert / error)
 
 /*
  * Gradients

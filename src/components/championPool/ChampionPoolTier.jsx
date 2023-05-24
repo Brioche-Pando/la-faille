@@ -101,26 +101,17 @@ function ChampionPoolTier ({
 
   return (
     <div
-      className='championpool__tier'
+      className='champion-pool__tier'
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
-      <p>{tierName}</p>
-      <ul
-        style={{
-          minHeight: '100px',
-          minWidth: '150px',
-          border: '1px solid black',
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '6px'
-        }}
-      >
+      <p className='champion-pool__tier-label'>{tierName}</p>
+      <ul className='champion-pool__tier-list'>
         {championPool[tierSlug].length ? (
           championPool[tierSlug].map(champion => (
             <li
-              key={'championpool-' + champion.slug}
-              style={{ listStyle: 'none' }}
+              key={'champion-pool-' + champion.slug}
+              className='champion-pool__tier-item'
             >
               <ChampionIcon
                 champion={champion}
@@ -132,17 +123,18 @@ function ChampionPoolTier ({
               />
               <span>{champion.name}</span>
               {editable ? (
-                <button onClick={() => handleRemoveChampion(champion.id)}>
-                  Remove
-                </button>
+                <button
+                  onClick={() => handleRemoveChampion(champion.id)}
+                  className='champion-pool__tier-item__remove'
+                ></button>
               ) : (
                 ''
               )}
             </li>
           ))
         ) : (
-          <li>
-            <img src="" alt="" />
+          <li className='champion-pool__tier-item champion-pool__tier-item--empty'>
+            <img src='/src/assets/img/icons/move.svg' alt='move icon' />
             <p>Glisser-déposer vos champions dans cette catégorie</p>
           </li>
         )}
