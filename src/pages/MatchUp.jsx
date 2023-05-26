@@ -15,7 +15,7 @@ function MatchUp () {
 
   return (
     <div className='content-1x1'>
-      <ChampionPoolSingle handleChampionSelect={handleChampionSelect} />
+      <ChampionPoolSingle roleIcon='support' handleChampionSelect={handleChampionSelect} />
       <MatchUpSingle selectedChampion={selectedChampion} />
     </div>
   )

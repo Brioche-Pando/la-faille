@@ -18,8 +18,8 @@ function ChampionPoolSingle ({
   })
 
   return (
-    <div className='champion-pool'>
-      <div className='champion-pool__header'>
+    <div className='champion-pool tier-list'>
+      <div className='champion-pool__header tier-list__header'>
         {!isChampionPoolPage ? (
           <>
             <img

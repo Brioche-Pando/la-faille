@@ -64,9 +64,9 @@ function MatchUpTier ({ tierSlug, tierName, selectedChampion, isPreview }) {
   }
 
   return (
-    <div className='matchup__tier'>
-      <div style={{ display: 'flex' }}>
-        <h3>{tierName}</h3>
+    <div className='matchup__rank tier-list__rank'>
+      <div className='matchup__rank-label tier-list__rank-label'>
+        <p>{tierName}</p>
         {isPreview || (
           <button
             onClick={() => {
@@ -75,55 +75,50 @@ function MatchUpTier ({ tierSlug, tierName, selectedChampion, isPreview }) {
                 .classList.toggle('search-modal--hidden')
             }}
           >
-            +
+            <img
+              src='src/assets/img/icons/add-cross.svg'
+              alt='open modal to add champion'
+            />
           </button>
         )}
       </div>
-      <div className='matchup__content' style={{ position: 'relative' }}>
-        <ul
-          style={{
-            minHeight: '100px',
-            minWidth: '150px',
-            border: '1px solid black',
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '6px'
-          }}
-        >
-          {selectedChampion ? (
-            matchUpPool[selectedChampion.slug] ? (
-              matchUpPool[selectedChampion.slug][tierSlug].map(champion => (
-                <li
-                  key={'matchuppool-' + champion.slug}
-                  style={{ listStyle: 'none' }}
-                >
-                  <ChampionIcon champion={champion} />
-                  <span>{champion.name}</span>
-
-                  {isPreview || (
-                    <button onClick={() => handleRemoveChampion(champion)}>
-                      Remove
-                    </button>
-                  )}
-                </li>
-              ))
-            ) : (
-              <li style={{ listStyle: 'none' }}>
-                Aucun champion n'a été renseigné dans ce tier pour le moment
+      <ul className='matchup__rank-list tier-list__rank-list'>
+        {selectedChampion ? (
+          matchUpPool[selectedChampion.slug] ? (
+            matchUpPool[selectedChampion.slug][tierSlug].map(champion => (
+              <li
+                key={'matchuppool-' + champion.slug}
+                className='matchup__rank-item tier-list__rank-item'
+              >
+                <ChampionIcon champion={champion} />
+                {isPreview || (
+                  <button
+                    onClick={() => handleRemoveChampion(champion)}
+                    className='matchup__rank-item__remove tier-list__item__remove'
+                  >
+                    Remove
+                  </button>
+                )}
               </li>
-            )
+            ))
           ) : (
-            <li style={{ listStyle: 'none' }}>
-              Aucun champion n'est sélectionné pour le moment
+            <li className='matchup__rank-item matchup__rank-item--empty tier-list__rank-item tier-list__rank-item--empty'>
+              Aucun champion n'a été renseigné dans ce tier pour le moment
             </li>
-          )}
-        </ul>
-        <div
-          id={'modal-' + tierSlug}
-          className='search-modal search-modal--hidden'
-        >
+          )
+        ) : (
+          <li className='matchup__rank-item matchup__rank-item--empty tier-list__rank-item tier-list__rank-item--empty'>
+            Aucun champion n'est sélectionné pour le moment
+          </li>
+        )}
+      </ul>
+      <div
+        id={'modal-' + tierSlug}
+        className='search-modal search-modal--hidden'
+      >
+        <div className='search-modal__inner'>
           <ChampionSearch
-            hasFilter={false}
+            isModal={true}
             handleChampionSelect={handleAddChampion}
           />
         </div>

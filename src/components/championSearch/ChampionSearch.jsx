@@ -3,7 +3,7 @@ import championData from '../../data/champions.json'
 import ChampionIcon from '../championIcon/ChampionIcon'
 import RoleButton from '../roleButton/RoleButton'
 
-function ChampionSearch ({ hasFilter = true, handleChampionSelect = null }) {
+function ChampionSearch ({ isModal = false, handleChampionSelect = null }) {
   const [roleFilter, setRoleFilter] = useState()
   const [searchText, setSearchText] = useState('')
 
@@ -33,33 +33,33 @@ function ChampionSearch ({ hasFilter = true, handleChampionSelect = null }) {
   }
 
   return (
-    <div className='search'>
-      <div className='search__header'>
-        {hasFilter && (
-          <div className='search__roles'>
-            {roles.map(role => (
-              <RoleButton
-                key={role}
-                role={role}
-                active={roleFilter === role}
-                handleClick={setRoleFilter}
-              />
-            ))}
-          </div>
+    <div className={isModal ? ('champion-search champion-search--full') : 'champion-search'}>
+      <div className={isModal ? ('champion-search__header champion-search__header--grid') : 'champion-search__header'}>
+        {isModal && (
+          <h4>Sélectionner un champion</h4>
         )}
-        <div className='search__bar'>
+        <div className='champion-search__roles'>
+          {roles.map(role => (
+            <RoleButton
+              key={role}
+              role={role}
+              active={roleFilter === role}
+              handleClick={setRoleFilter}
+            />
+          ))}
+        </div>
+        <div className='champion-search__searchbar'>
           {/* Barre de recherche */}
           <input
             type='text'
             value={searchText}
             onChange={event => setSearchText(event.target.value)}
+            placeholder='Recherche'
+            className='champion-search__searchbar-input'
           />
         </div>
       </div>
-      <div
-        className='search__results'
-        style={{ display: 'flex', flexWrap: 'wrap' }}
-      >
+      <div className='champion-search__results'>
         {/* Afficher les champions filtrés */}
         {filteredChampions.length ? (
           filteredChampions.map(champion => (

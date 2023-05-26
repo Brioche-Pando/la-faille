@@ -1,13 +1,43 @@
-.champion-pool {
-    flex: 1;
-    
+.matchup {
+    width: 365px;
+
     &__header {
-        padding-top: 8px;
+        padding-top: 12px;
         display: flex;
-        gap: 8px;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+
+        & figure {
+            max-width: 275px;
+            text-align: center;
+        }
     }
 
     &__rank {
+        &-label {
+            position: relative;
+
+            button {
+                width: 24px;
+                height: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                top: 50%;
+                right: 12px;
+                transform: translateY(-50%);
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+
+                img {
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+        }
 
         &-list {
             width: 100%;
