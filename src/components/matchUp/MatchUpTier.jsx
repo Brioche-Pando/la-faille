@@ -35,6 +35,10 @@ function MatchUpTier ({ tierSlug, tierName, selectedChampion, isPreview }) {
     }
 
     setMatchUpPool(newMatchUpPool)
+    
+    document
+      .getElementById('modal-' + tierSlug)
+      .classList.toggle('search-modal--hidden')
   }
 
   function handleRemoveChampion (championToRemove) {
@@ -67,7 +71,7 @@ function MatchUpTier ({ tierSlug, tierName, selectedChampion, isPreview }) {
     <div className='matchup__rank tier-list__rank'>
       <div className='matchup__rank-label tier-list__rank-label'>
         <p>{tierName}</p>
-        {isPreview || (
+        {!isPreview && selectedChampion != null && (
           <button
             onClick={() => {
               document

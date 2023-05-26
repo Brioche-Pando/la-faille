@@ -82,9 +82,17 @@ const CompositionSinglePick = ({
         </figcaption>
       </figure>
       {isPreview || (
-        <div id={'modal-' + role} className='search-modal search-modal--hidden'>
-          <ChampionSearch handleChampionSelect={handleAddChampion} />
+        <div
+        id={'modal-' + role}
+        className='search-modal search-modal--hidden'
+      >
+        <div className='search-modal__inner'>
+          <ChampionSearch
+            isModal={true}
+            handleChampionSelect={handleAddChampion}
+          />
         </div>
+      </div>
       )}
     </div>
   )
