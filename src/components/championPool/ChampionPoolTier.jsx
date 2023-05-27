@@ -125,7 +125,7 @@ function ChampionPoolTier ({
               {editable ? (
                 <button
                   onClick={() => handleRemoveChampion(champion.id)}
-                  className='champion-pool__rank-item__remove tier-list__item__remove'
+                  className='champion-pool__rank-item__remove tier-list__rank-item__remove'
                 ></button>
               ) : (
                 ''

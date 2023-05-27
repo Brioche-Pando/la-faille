@@ -48,44 +48,5 @@
             justify-content: center;
             gap: 8px;
         }
-
-        &-item {
-            list-style: none;
-            position: relative;
-
-            &__remove {
-                width: 19px;
-                height: 19px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: absolute;
-                top: 0;
-                right: 0;
-                border: 1px solid $white;
-                border-radius: 25px;
-                background-color: $error;
-                color: $white;
-                cursor: pointer;
-                visibility: hidden;
-
-                &::before {
-                    content: "";
-                    width: 7px;
-                    height: 3px;
-                    background-color: $white;
-                }
-            }
-
-            &:hover {
-                .champion-pool__rank-item__remove {
-                    visibility: visible;
-                }
-            }
-
-            &--empty {
-                text-align: center;
-            }
-        }
     }
 }

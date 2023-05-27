@@ -59,10 +59,8 @@
                 }
             }
 
-            &:hover {
-                .champion-pool__tier-item__remove {
-                    visibility: visible;
-                }
+            &:hover .tier-list__rank-item__remove {
+                visibility: visible;
             }
 
             &--empty {

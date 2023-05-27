@@ -4,14 +4,7 @@ import useLocalStorage from '../../hooks/useLocalStorage'
 import ChampionIcon from '../championIcon/ChampionIcon'
 
 function MatchUpTier ({ tierSlug, tierName, selectedChampion, isPreview }) {
-  const [matchUpPool, setMatchUpPool] = useLocalStorage('matchUpPool', {
-    selectedChampion: {
-      weak_against: [],
-      strong_against: [],
-      strong_with: [],
-      weak_with: []
-    }
-  })
+  const [matchUpPool, setMatchUpPool] = useLocalStorage('matchUpPool', {})
 
   function handleAddChampion (newChampion) {
     const { slug } = selectedChampion // Récupérer le slug du champion sélectionné
@@ -24,8 +17,14 @@ function MatchUpTier ({ tierSlug, tierName, selectedChampion, isPreview }) {
       weak_with: []
     }
 
-    const newMatchUpTabs = [...selectedChampionMatchUp[tierSlug], newChampion]
+    const newMatchUpTabs = selectedChampionMatchUp[tierSlug]
 
+    // Vérifier si le nouveau champion existe déjà dans le tier
+    if (newMatchUpTabs.some(champion => champion.slug === newChampion.slug)) {
+      return
+    }
+
+    newMatchUpTabs.push(newChampion)
     const newMatchUpPool = {
       ...matchUpPool,
       [slug]: {
@@ -33,9 +32,9 @@ function MatchUpTier ({ tierSlug, tierName, selectedChampion, isPreview }) {
         [tierSlug]: newMatchUpTabs
       }
     }
-
     setMatchUpPool(newMatchUpPool)
-    
+
+    // On cache la modale
     document
       .getElementById('modal-' + tierSlug)
       .classList.toggle('search-modal--hidden')
@@ -98,10 +97,8 @@ function MatchUpTier ({ tierSlug, tierName, selectedChampion, isPreview }) {
                 {isPreview || (
                   <button
                     onClick={() => handleRemoveChampion(champion)}
-                    className='matchup__rank-item__remove tier-list__item__remove'
-                  >
-                    Remove
-                  </button>
+                    className='matchup__rank-item__remove tier-list__rank-item__remove'
+                  ></button>
                 )}
               </li>
             ))
