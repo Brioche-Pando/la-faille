@@ -90,7 +90,7 @@ function MatchUpTier ({ tierSlug, tierName, selectedChampion, isPreview }) {
           matchUpPool[selectedChampion.slug] ? (
             matchUpPool[selectedChampion.slug][tierSlug].map(champion => (
               <li
-                key={'matchuppool-' + champion.slug}
+                key={'matchuppool-' + champion.slug + '-' + tierSlug}
                 className='matchup__rank-item tier-list__rank-item'
               >
                 <ChampionIcon champion={champion} />

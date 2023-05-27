@@ -10,60 +10,59 @@ function ChampionPoolTier ({
   handleChampionSelect
 }) {
   const handleDrop = event => {
-    if (editable) {
-      event.preventDefault()
-      const championId = event.dataTransfer.getData('championId')
-      const championSlug = event.dataTransfer.getData('championSlug')
+    if (!editable) {
+      return
+    }
+    event.preventDefault()
+    const championId = event.dataTransfer.getData('championId')
+    const championSlug = event.dataTransfer.getData('championSlug')
 
-      let championAlreadyExist = false
+    let championAlreadyExist = false
 
-      for (const tierSlug in championPool) {
-        const championsInTier = championPool[tierSlug]
-        const foundChampion = championsInTier.find(
-          champion => champion.slug === championSlug
-        )
-        if (foundChampion) {
-          championAlreadyExist = foundChampion
-          break
-        }
+    for (const tierSlug in championPool) {
+      const championsInTier = championPool[tierSlug]
+      const foundChampion = championsInTier.find(
+        champion => champion.slug === championSlug
+      )
+      if (foundChampion) {
+        championAlreadyExist = foundChampion
+        break
+      }
+    }
+
+    // Si le champion n'est pas dans le champion pool
+    if (!championAlreadyExist) {
+      // Création du nouveau champion
+      const newChampion = {
+        id: championId,
+        slug: championSlug,
+        tier: tierSlug
       }
 
-      // Si le champion n'est pas dans le champion pool
-      if (!championAlreadyExist) {
-        // Création du nouveau champion
-        const newChampion = {
-          id: championId,
-          slug: championSlug,
-          tier: tierSlug
-        }
+      // Ajout à la liste de champions
+      const newChampionTabs = [...championPool[tierSlug], newChampion]
+      const newChampionPool = { ...championPool, [tierSlug]: newChampionTabs }
+      setChampionPool(newChampionPool)
 
-        // Ajout à la liste de champions
-        const newChampionTabs = [...championPool[tierSlug], newChampion]
-        const newChampionPool = { ...championPool, [tierSlug]: newChampionTabs }
-        setChampionPool(newChampionPool)
-
-        // Si il est déjà dans le champion pool
-      } else if (championAlreadyExist.tier !== tierSlug) {
-        // Suppression du champion de son ancien tier
-        const oldChampions = championPool[championAlreadyExist.tier].filter(
-          champion => champion.slug !== championSlug
-        )
-        const newChampionPool = {
-          ...championPool,
-          [championAlreadyExist.tier]: oldChampions
-        }
-
-        // Changement du tier du champion
-        const updatedChampion = { ...championAlreadyExist, tier: tierSlug }
-
-        // Ajout du champion à son nouveau tier
-        const newChampions = [...championPool[tierSlug], updatedChampion]
-        newChampionPool[tierSlug] = newChampions
-
-        setChampionPool(newChampionPool)
+      // Si il est déjà dans le champion pool
+    } else if (championAlreadyExist.tier !== tierSlug) {
+      // Suppression du champion de son ancien tier
+      const oldChampions = championPool[championAlreadyExist.tier].filter(
+        champion => champion.slug !== championSlug
+      )
+      const newChampionPool = {
+        ...championPool,
+        [championAlreadyExist.tier]: oldChampions
       }
-    } else {
-      return false
+
+      // Changement du tier du champion
+      const updatedChampion = { ...championAlreadyExist, tier: tierSlug }
+
+      // Ajout du champion à son nouveau tier
+      const newChampions = [...championPool[tierSlug], updatedChampion]
+      newChampionPool[tierSlug] = newChampions
+
+      setChampionPool(newChampionPool)
     }
   }
 
@@ -105,7 +104,9 @@ function ChampionPoolTier ({
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
-      <p className='champion-pool__rank-label tier-list__rank-label'>{tierName}</p>
+      <p className='champion-pool__rank-label tier-list__rank-label'>
+        {tierName}
+      </p>
       <ul className='champion-pool__rank-list tier-list__rank-list'>
         {championPool[tierSlug].length ? (
           championPool[tierSlug].map(champion => (
