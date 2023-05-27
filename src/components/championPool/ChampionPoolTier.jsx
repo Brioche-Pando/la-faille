@@ -133,10 +133,14 @@ function ChampionPoolTier ({
               )}
             </li>
           ))
-        ) : (
+        ) : editable ? (
           <li className='champion-pool__rank-item champion-pool__rank-item--empty tier-list__rank-item tier-list__rank-item--empty'>
             <img src='/src/assets/img/icons/move.svg' alt='move icon' />
             <p>Glisser-déposer vos champions dans cette catégorie</p>
+          </li>
+        ) : (
+          <li className='champion-pool__rank-item champion-pool__rank-item--empty tier-list__rank-item tier-list__rank-item--empty'>
+            <p>Aucun champion n'a été renseigné dans cette catégorie</p>
           </li>
         )}
       </ul>

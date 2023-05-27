@@ -1,0 +1,41 @@
+.compositions-preview {
+    padding: 16px 20px;
+    background-color: $white;
+    box-shadow: $shadow_1;
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        row-gap: 16px;
+    }
+
+    &__header,
+    &__item {
+        display: grid;
+        grid-template-columns: 300px repeat(2, 1fr);
+        column-gap: 20px;
+    }
+
+    &__header {
+        padding-inline: 12px;
+        margin-bottom: 8px;
+    }
+
+    &__item {
+        padding: 8px 12px;
+        align-items: center;
+        background-color: $white;
+        box-shadow: $shadow_1;
+        list-style: none;
+    }
+
+    &__bans,
+    &__picks {
+        display: flex;
+        gap: 6px;
+    }
+
+    &__title {
+        
+    }
+}
