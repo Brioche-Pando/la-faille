@@ -1,0 +1,60 @@
+{
+    "best_champions": [
+        {
+            "id": "36",
+            "slug": "gnar",
+            "tier": "best_champions"
+        },
+        {
+            "id": "64",
+            "slug": "ksante",
+            "tier": "best_champions"
+        }
+    ],
+    "match_ready": [
+        {
+            "id": "59",
+            "slug": "kennen",
+            "tier": "match_ready"
+        },
+        {
+            "id": "62",
+            "slug": "kled",
+            "tier": "match_ready"
+        },
+        {
+            "id": "22",
+            "slug": "darius",
+            "tier": "match_ready"
+        },
+        {
+            "id": "118",
+            "slug": "sion",
+            "tier": "match_ready"
+        }
+    ],
+    "scrim_ready": [
+        {
+            "id": "48",
+            "slug": "jayce",
+            "tier": "scrim_ready"
+        },
+        {
+            "id": "92",
+            "slug": "ornn",
+            "tier": "scrim_ready"
+        }
+    ],
+    "training_required": [
+        {
+            "id": "154",
+            "slug": "yone",
+            "tier": "training_required"
+        },
+        {
+            "id": "47",
+            "slug": "jax",
+            "tier": "training_required"
+        }
+    ]
+}

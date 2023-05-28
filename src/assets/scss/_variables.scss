@@ -1,0 +1,63 @@
+/*
+ * Colors
+ */
+$white: #fafafa; // (White)
+$black: #010a13; // (Black)
+
+$primary: #ead8b3; // (Gold)
+$primary-400: #A37D2E; // (Gold - )
+
+$secondary: #0a323c; // (Blue)
+
+$white_background: #EFF0F1;
+$dark_background: #222426;
+$grey_background: #BDBDBD;
+
+$back_overlay: rgba(1, 10, 19, .75);
+
+$error: #FF442E; // (Red alert / error)
+
+/*
+ * Gradients
+ */
+$gradient_1: linear-gradient(90deg, #cdfafa 0%, #785a28 0.01%, #c89b3c 100%);
+$gradient_2: linear-gradient(
+    0deg,
+    rgba(149, 159, 163, 0) 31.02%,
+    rgba(149, 159, 163, 0.14) 45.32%,
+    rgba(149, 159, 163, 0.52) 75.82%,
+    #86979b 112.03%
+);
+
+/*
+ * Shadows
+ */
+$shadow_1: 0px 0px 6px -1px rgba(0, 0, 0, 0.13), 0px 2px 4px -1px rgba(0, 0, 0, 0.09);
+
+/*
+ * Breakpoints
+ */
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
+/*
+ * Spacers
+ */
+$s1: 0.2rem;
+$s2: 0.4rem;
+$s3: 0.8rem;
+$s4: 1.2rem;
+$s5: 1.6rem;
+$s5_5: 2.4rem;
+$s6: 3.2rem;
+$s7: 4.8rem;
+$s8: 6.4rem;
+// $s8_6: 3rem;
+$s8_6: 30px;
+// $s8: 3.4rem;
+$s8_5: 8.4rem;
+$s9: 9.6rem;
+$s10: 12.8rem;

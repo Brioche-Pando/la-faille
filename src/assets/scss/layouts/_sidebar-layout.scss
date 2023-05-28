@@ -1,0 +1,14 @@
+.sidebar-layout {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 102px 1fr;
+    grid-template-areas: "sidebar content";
+    gap: 20px;
+
+    .content {
+        grid-area: content;
+        align-self: center;
+        padding-right: 122px;
+    }
+}
