@@ -18,7 +18,7 @@ function MatchUpSingle ({ selectedChampion, isPreview = false }) {
           ) : (
             <figure>
               <img
-                src='/src/assets/img/icons/click.svg'
+                src='/public/assets/img/icons/click.svg'
                 alt='click icon illustration'
                 className='matchup__selection-img'
               />

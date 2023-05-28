@@ -16,13 +16,13 @@ function ChampionIcon ({
       {onChampionSelect ? (
         <img
           onClick={() => onChampionSelect(champion)}
-          src={`../src/assets/champion_icon/${champion.slug}.png`}
+          src={`../public/assets/champion_icon/${champion.slug}.png`}
           alt={champion.slug}
           className='champion-icon__img'
         />
       ) : (
         <img
-          src={`../src/assets/champion_icon/${champion.slug}.png`}
+          src={`../public/assets/champion_icon/${champion.slug}.png`}
           alt={champion.slug}
           className='champion-icon__img'
         />

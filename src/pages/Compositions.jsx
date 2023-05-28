@@ -14,7 +14,7 @@ function Compositions () {
     <div className='compositions'>
       <a href='/compositions/create' className='button compositions__button'>
         Créer une nouvelle composition
-        <img src='src/assets/img/icons/add-cross.svg' alt='add icon' />
+        <img src='public/assets/img/icons/add-cross.svg' alt='add icon' />
       </a>
       <CompositionsPreview storedCompositions={storedCompositions} />
     </div>

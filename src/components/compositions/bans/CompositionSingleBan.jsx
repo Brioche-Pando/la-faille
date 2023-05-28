@@ -33,12 +33,12 @@ const CompositionSingleBan = ({ number, bans, handleSetBan = null }) => {
         {selectedChampion ? (
           <img
             src={
-              '../src/assets/champion_icon/' + selectedChampion.slug + '.png'
+              '../public/assets/champion_icon/' + selectedChampion.slug + '.png'
             }
             alt={selectedChampion.slug}
           />
         ) : (
-          <img src='../src/assets/img/icons/add.svg' alt='' />
+          <img src='../public/assets/img/icons/add.svg' alt='' />
         )}
 
         <figcaption>
