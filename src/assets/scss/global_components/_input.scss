@@ -1,0 +1,29 @@
+.input {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    &__label {
+        sup {
+            color: $error;
+        }
+    }
+
+    &__input {
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid $black;
+        font-size: 18px;
+        font-family: 'Spiegel';
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__helper {
+        color: $grey_background;
+    }
+}

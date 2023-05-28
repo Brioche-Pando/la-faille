@@ -1,0 +1,11 @@
+.compositions {
+    height: 100vh;
+    padding-block: 8.5vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    row-gap: 26px;
+
+    &__button {
+        justify-self: flex-end;
+    }
+}

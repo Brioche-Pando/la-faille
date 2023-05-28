@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Spiegel';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Spiegel'),
+    url('../../fonts/Spiegel/spiegel.woff2') format('woff2'),
+    url('../../fonts/Spiegel/spiegel.woff') format('woff'),
+    url('../../fonts/Spiegel/spiegel.ttf') format('truetype'),
+}
+
+@font-face {
+    font-family: 'Spiegel';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Spiegel Bold'),
+    url('../../fonts/Spiegel/spiegel-bold.woff2') format('woff2'),
+    url('../../fonts/Spiegel/spiegel-bold.woff') format('woff'),
+    url('../../fonts/Spiegel/spiegel-bold.ttf') format('truetype'),
+}

@@ -1,0 +1,22 @@
+.search-modal {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: $back_overlay;
+    overflow: auto;
+
+    &__inner {
+        width: max(805px,55%);
+        height: max(600px,55%);
+    }
+
+    &--hidden {
+        display: none;
+    }
+}

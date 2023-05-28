@@ -1,0 +1,7 @@
+.content-1x1 {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    grid-template-columns: 1fr 365px;
+    gap: 20px;
+}

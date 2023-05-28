@@ -1,0 +1,55 @@
+{
+    "best_champions": [
+        {
+            "id": "150",
+            "slug": "xayah",
+            "tier": "best_champions"
+        },
+        {
+            "id": "7",
+            "slug": "aphelios",
+            "tier": "best_champions"
+        }
+    ],
+    "match_ready": [
+        {
+            "id": "119",
+            "slug": "sivir",
+            "tier": "match_ready"
+        },
+        {
+            "id": "50",
+            "slug": "jinx",
+            "tier": "match_ready"
+        },
+        {
+            "id": "29",
+            "slug": "ezreal",
+            "tier": "match_ready"
+        }
+    ],
+    "scrim_ready": [
+        {
+            "id": "139",
+            "slug": "varus",
+            "tier": "scrim_ready"
+        },
+        {
+            "id": "132",
+            "slug": "tristana",
+            "tier": "scrim_ready"
+        }
+    ],
+    "training_required": [
+        {
+            "id": "159",
+            "slug": "zeri",
+            "tier": "training_required"
+        },
+        {
+            "id": "160",
+            "slug": "ziggs",
+            "tier": "training_required"
+        }
+    ]
+}

@@ -1,45 +1,59 @@
 import React from 'react'
-import { useState } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
-import Layout from './components/Layout'
-import Dashboard from './pages/Dashboard'
+import SidebarLayout from './layouts/SidebarLayout'
+import FullScreenLayout from './layouts/FullScreenLayout'
+import Home from './pages/Home'
 import Champion_Pool from './pages/ChampionPool'
 import Match_Up from './pages/MatchUp'
+import Compositions from './pages/Compositions'
+import NewComposition from './pages/NewComposition'
 
 function App () {
   const router = createBrowserRouter([
     {
       path: '/',
       element: (
-        <Layout>
-          <Dashboard />
-        </Layout>
+        <SidebarLayout>
+          <Home />
+        </SidebarLayout>
       )
     },
     {
       path: '/champion-pool',
       element: (
-        <Layout>
+        <SidebarLayout>
           <Champion_Pool />
-        </Layout>
+        </SidebarLayout>
       )
     },
     {
       path: 'match-up',
       element: (
-        <Layout>
+        <SidebarLayout>
           <Match_Up />
-        </Layout>
+        </SidebarLayout>
+      )
+    },
+    {
+      path: '/compositions',
+      element: (
+        <SidebarLayout>
+          <Compositions />
+        </SidebarLayout>
+      )
+    },
+    {
+      path: '/compositions/create',
+      element: (
+        <FullScreenLayout>
+          <NewComposition />
+        </FullScreenLayout>
       )
     }
   ])
 
-  return (
-    <div className='App'>
-      <RouterProvider router={router} />
-    </div>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
