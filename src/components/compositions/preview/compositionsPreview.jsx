@@ -6,10 +6,15 @@ function compositionsPreview ({ storedCompositions }) {
     <div className='compositions-preview'>
       {storedCompositions ? (
         Object.entries(storedCompositions).length === 0 ? (
-          <>
-            <p>Aucune composition n'a été créée pour le moment.</p>
+          <div className='compositions-preview__warning'>
+            <h1>Vous n'avez aucune composition créée.</h1>
+            <p>
+              Commence à créer maintenant et sauvegarde tes compositions pour
+              plus tard
+            </p>
             <a href='/compositions/create'>Créer une nouvelle composition</a>
-          </>
+            <img src='./assets/img/icons/add-cross.svg' alt='add icon' />
+          </div>
         ) : (
           <ul className='compositions-preview__list'>
             <li className='compositions-preview__header'>
@@ -37,7 +42,18 @@ function compositionsPreview ({ storedCompositions }) {
           </ul>
         )
       ) : (
-        <div>Message informatif de l'information du manque d'informations</div>
+        <div className='compositions-preview__warning'>
+          <img src='./assets/img/emotes/Does_Not_Compute.webp' alt='' />
+          <h1 className='compositions-preview__warning-title'>Vous n'avez aucune composition créée.</h1>
+          <p className='compositions-preview__warning-desc'>
+            Commence à créer maintenant et sauvegarde tes compositions pour plus
+            tard.
+          </p>
+          <a href='/compositions/create' className='button compositions-preview__warning-button'>
+            Créer une nouvelle composition
+            <img src='./assets/img/icons/add-cross.svg' alt='add icon' />
+          </a>
+        </div>
       )}
     </div>
   )
