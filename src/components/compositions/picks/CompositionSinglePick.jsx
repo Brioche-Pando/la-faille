@@ -29,7 +29,7 @@ const CompositionSinglePick = ({
     <div className='new-composition__chose-container'>
       <figure className='new-composition__chose-title'>
         <img
-          src={`../public/assets/img/role_icons/${role}.svg`}
+          src={`.././assets/img/role_icons/${role}.svg`}
           alt={role}
           width={18}
           height={18}
@@ -50,12 +50,12 @@ const CompositionSinglePick = ({
         {selectedChampion ? (
           <img
             src={
-              '../public/assets/champion_icon/' + selectedChampion.slug + '.png'
+              '.././assets/champion_icon/' + selectedChampion.slug + '.png'
             }
             alt={selectedChampion.slug}
           />
         ) : (
-          <img src='../public/assets/img/icons/add.svg' alt='' />
+          <img src='.././assets/img/icons/add.svg' alt='' />
         )}
 
         <figcaption>
