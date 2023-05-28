@@ -23,7 +23,7 @@ function ChampionPoolSingle ({
         {!isPreview ? (
           <>
             <img
-              src={'src/assets/img/role_icons/' + roleIcon + '.svg'}
+              src={'public/assets/img/role_icons/' + roleIcon + '.svg'}
               alt='Role Icon'
             />
             <h3>{playerName}</h3>

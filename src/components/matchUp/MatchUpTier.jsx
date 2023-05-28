@@ -79,7 +79,7 @@ function MatchUpTier ({ tierSlug, tierName, selectedChampion, isPreview }) {
             }}
           >
             <img
-              src='src/assets/img/icons/add-cross.svg'
+              src='public/assets/img/icons/add-cross.svg'
               alt='open modal to add champion'
             />
           </button>
