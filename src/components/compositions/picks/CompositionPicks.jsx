@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import CompositionSinglePick from './CompositionSinglePick';
-import ChampionPoolSingle from '../../championPool/ChampionPoolSingle';
-import topChampionPool from '../../../data/championPool/top.json';
-import jungleChampionPool from '../../../data/championPool/jungle.json';
-import midChampionPool from '../../../data/championPool/mid.json';
-import adcChampionPool from '../../../data/championPool/adc.json';
+import React, { useState } from 'react'
+import CompositionSinglePick from './CompositionSinglePick'
+import ChampionPoolSingle from '../../championPool/ChampionPoolSingle'
+import topChampionPool from '../../../data/championPool/top.json'
+import jungleChampionPool from '../../../data/championPool/jungle.json'
+import midChampionPool from '../../../data/championPool/mid.json'
+import adcChampionPool from '../../../data/championPool/adc.json'
 
 const CompositionPicks = ({ onNext, picks, handleSetPick }) => {
   const lineUp = [
@@ -28,19 +28,18 @@ const CompositionPicks = ({ onNext, picks, handleSetPick }) => {
       role: 'support',
       championPool: false
     }
-  ];
+  ]
 
   const handlePickSelection = (role, pick) => {
-    handleSetPick(role, pick);
-  };
+    handleSetPick(role, pick)
+  }
 
   return (
-    <div>
+    <div className='new-composition__inner'>
       {/* Affichage des choix de picks */}
-      <h2>Step 1: Choose Picks</h2>
-      <div style={{ display: 'flex', gap: '20px' }}>
+      <div className='new-composition__content'>
         {lineUp.map(player => (
-          <div key={player.role}>
+          <div key={player.role} className='new-composition__col'>
             {/* CompositionSinglePick pour chaque poste */}
             <CompositionSinglePick
               role={player.role}
@@ -52,7 +51,7 @@ const CompositionPicks = ({ onNext, picks, handleSetPick }) => {
             {/* ChampionPoolSingle pour chaque poste */}
             <ChampionPoolSingle
               roleIcon={player.role}
-              isChampionPoolPage={true}
+              isPreview={true}
               championPoolLocal={player.championPool}
             />
           </div>
@@ -60,10 +59,15 @@ const CompositionPicks = ({ onNext, picks, handleSetPick }) => {
       </div>
 
       {/* Bouton pour passer à l'étape suivante */}
-      <a href='/compositions'>quitter</a>
-      <button onClick={onNext} disabled={Object.keys(picks).length < 5}>suivant</button>
+      <div className='new-composition__buttons'>
+        <a href='/compositions'>quitter</a>
+        <span className='new-composition__buttons-separator'></span>
+        <button onClick={onNext} disabled={Object.keys(picks).length < 5}>
+          suivant
+        </button>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default CompositionPicks;
+export default CompositionPicks

@@ -100,7 +100,7 @@ function ChampionPoolTier ({
 
   return (
     <div
-      className='champion-pool__tier tier-list__tier'
+      className='champion-pool__rank tier-list__rank'
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >

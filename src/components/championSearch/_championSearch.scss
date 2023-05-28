@@ -20,7 +20,7 @@
 
         &--grid {
             display: grid;
-            grid-template-columns: 25% 1fr 25%;
+            grid-template-columns: 1fr auto 1fr;
 
             .champion-search__roles {
                 justify-self: center;

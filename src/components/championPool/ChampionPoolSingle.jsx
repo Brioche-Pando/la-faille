@@ -6,7 +6,7 @@ function ChampionPoolSingle ({
   roleIcon,
   playerName = 'Pseudo',
   editable = false,
-  isChampionPoolPage = false,
+  isPreview = false,
   championPoolLocal = false,
   handleChampionSelect = null
 }) {
@@ -18,9 +18,9 @@ function ChampionPoolSingle ({
   })
 
   return (
-    <div className='champion-pool tier-list'>
+    <div className={isPreview ? 'champion-pool tier-list tier-list--preview' : 'champion-pool tier-list'}>
       <div className='champion-pool__header tier-list__header'>
-        {!isChampionPoolPage ? (
+        {!isPreview ? (
           <>
             <img
               src={'src/assets/img/role_icons/' + roleIcon + '.svg'}

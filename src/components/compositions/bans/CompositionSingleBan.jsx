@@ -20,17 +20,10 @@ const CompositionSingleBan = ({ number, bans, handleSetBan = null }) => {
   }
 
   return (
-    <div>
-      <h2 style={{ textTransform: 'capitalize' }}>Ban N°{number}</h2>
+    <div className='new-composition__chose-container'>
+      <h2 className='new-composition__chose-title'>Ban N°{number}</h2>
       <figure
-        style={{
-          cursor: 'pointer',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '16px',
-          margin: '0'
-        }}
+        className='new-composition__chose-button'
         onClick={() => {
           document
             .getElementById('modal-' + number)
@@ -55,7 +48,12 @@ const CompositionSingleBan = ({ number, bans, handleSetBan = null }) => {
         </figcaption>
       </figure>
       <div id={'modal-' + number} className='search-modal search-modal--hidden'>
-        <ChampionSearch handleChampionSelect={handleAddChampion} />
+        <div className='search-modal__inner'>
+          <ChampionSearch
+            isModal={true}
+            handleChampionSelect={handleAddChampion}
+          />
+        </div>
       </div>
     </div>
   )

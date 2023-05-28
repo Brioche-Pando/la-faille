@@ -65,7 +65,20 @@
 
             &--empty {
                 text-align: center;
+                line-height: 1.1;
             }
+        }
+    }
+
+    &--preview {
+        .tier-list__rank-list {
+            max-height: 90px;
+            overflow-y: auto;
+        }
+        
+        .champion-icon {
+            width: clamp(25px, 3.25vw, 35px);
+            height: clamp(25px, 3.25vw, 35px);
         }
     }
 }
