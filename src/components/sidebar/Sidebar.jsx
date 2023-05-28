@@ -1,3 +1,4 @@
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 function Sidebar () {
@@ -13,7 +14,7 @@ function Sidebar () {
               <Link to='/compositions' className='sidebar__link'>
                 <figure className='sidebar__link-figure'>
                   <img
-                    src='./assets/img/icons/nav/team.svg'
+                    src='../assets/img/icons/nav/team.svg'
                     alt='navigation vers compositons'
                   />
                 </figure>
@@ -24,7 +25,7 @@ function Sidebar () {
               <Link to='/match-up' className='sidebar__link'>
                 <figure className='sidebar__link-figure'>
                   <img
-                    src='./assets/img/icons/nav/match_up.svg'
+                    src='../assets/img/icons/nav/match_up.svg'
                     alt='navigation vers match up'
                   />
                 </figure>
@@ -35,7 +36,7 @@ function Sidebar () {
               <Link to='/champion-pool' className='sidebar__link'>
                 <figure className='sidebar__link-figure'>
                   <img
-                    src='./assets/img/icons/nav/champion_pool.svg'
+                    src='../assets/img/icons/nav/champion_pool.svg'
                     alt='navigation vers champion pool'
                   />
                 </figure>
