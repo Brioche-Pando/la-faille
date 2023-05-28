@@ -17,6 +17,10 @@ function ChampionPoolTier ({
     const championId = event.dataTransfer.getData('championId')
     const championSlug = event.dataTransfer.getData('championSlug')
 
+    if (championId == '' || championSlug == '') {
+      return
+    }
+
     let championAlreadyExist = false
 
     for (const tierSlug in championPool) {
