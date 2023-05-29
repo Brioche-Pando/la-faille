@@ -9,6 +9,7 @@ import Match_Up from './pages/MatchUp'
 import Compositions from './pages/Compositions'
 import NewComposition from './pages/NewComposition'
 import MobileTabletUnavailablePage from './pages/MobileTabletUnavailablePage';
+import NotFoundPage from './pages/NotFoundPage'
 
 
 function App () {
@@ -53,6 +54,14 @@ function App () {
         <FullScreenLayout>
           <NewComposition />
         </FullScreenLayout>
+      )
+    },
+    {
+      path: '*',
+      element: (
+        <SidebarLayout>
+          <NotFoundPage />
+        </SidebarLayout>
       )
     }
   ])
