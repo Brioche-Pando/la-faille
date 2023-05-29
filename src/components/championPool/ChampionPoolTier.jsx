@@ -144,7 +144,17 @@ function ChampionPoolTier ({
           </li>
         ) : (
           <li className='champion-pool__rank-item champion-pool__rank-item--empty tier-list__rank-item tier-list__rank-item--empty'>
-            <p>Aucun champion n'a été renseigné dans cette catégorie</p>
+            <figure>
+              <img
+                src='assets/img/emotes/Bee_Sad.webp'
+                alt='click icon illustration'
+                className='matchup__selection-img'
+                width={85}
+              />
+              <figcaption>
+              Aucun champion n'a été renseigné dans cette catégorie
+              </figcaption>
+            </figure>
           </li>
         )}
       </ul>

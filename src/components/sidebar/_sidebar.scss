@@ -1,7 +1,7 @@
 .sidebar {
     height: 100vh;
     grid-area: sidebar;
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 9;
 
@@ -15,7 +15,6 @@
             "logo"
             "nav"
             "settings";
-        position: absolute;
         background-color: $dark_background;
         color: $primary;
         transition: width 0.25s ease;

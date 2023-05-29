@@ -1,6 +1,7 @@
 .matchup {
     &:not(.matchup--preview) {
-        width: 365px;
+        max-width: 365px;
+        width: 100%;
     }
 
     &--preview {

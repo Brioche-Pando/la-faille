@@ -11,14 +11,14 @@ function Sidebar () {
         <nav className='sidebar__nav'>
           <ul className='sidebar__list'>
             <li className='sidebar__item'>
-              <Link to='/compositions' className='sidebar__link'>
+              <Link to='/champion-pool' className='sidebar__link'>
                 <figure className='sidebar__link-figure'>
                   <img
-                    src='../assets/img/icons/nav/team.svg'
-                    alt='navigation vers compositons'
+                    src='../assets/img/icons/nav/champion_pool.svg'
+                    alt='navigation vers champion pool'
                   />
                 </figure>
-                <span className='sidebar__link-label'>Compositions</span>
+                <span className='sidebar__link-label'>Champion Pool</span>
               </Link>
             </li>
             <li className='sidebar__item'>
@@ -33,14 +33,14 @@ function Sidebar () {
               </Link>
             </li>
             <li className='sidebar__item'>
-              <Link to='/champion-pool' className='sidebar__link'>
+              <Link to='/compositions' className='sidebar__link'>
                 <figure className='sidebar__link-figure'>
                   <img
-                    src='../assets/img/icons/nav/champion_pool.svg'
-                    alt='navigation vers champion pool'
+                    src='../assets/img/icons/nav/team.svg'
+                    alt='navigation vers compositons'
                   />
                 </figure>
-                <span className='sidebar__link-label'>Champion Pool</span>
+                <span className='sidebar__link-label'>Compositions</span>
               </Link>
             </li>
           </ul>
