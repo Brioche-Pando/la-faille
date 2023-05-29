@@ -4,14 +4,55 @@ import { Link } from 'react-router-dom'
 function Home () {
   return (
     <div className='home'>
-      <h1 className='home__title'>Bienvenue sur <span>La Faille</span></h1>
+      <h1 className='home__title'>Bienvenue sur La Faille !</h1>
       <img
         src='./assets/img/emotes/Peace_Poro.webp'
         alt='emote peace poro'
         className='home__emote'
       />
-      <p className='home__desc'>La Faille est une plateforme regroupant de nombreux outils permettant aux équipes esport amateur de League of Legends de favoriser la convergence de leurs statégies.</p>
-      <Link to='/champion-pool' className='home__button'>Je te conseille de renseigner ton champion pool pour commencer</Link>
+      <h2>Qu'est-ce que La Faille ?</h2>
+      <p>
+        La Faille est une plateforme dédiée à l'optimisation des stratégies des
+        équipes esport amateures de League of Legends. Son objectif est d'aider
+        les équipes et les joueurs à maximiser leur potentiel en proposant des
+        outils créer spécifiquement pour ces équipes afin de les aider à
+        centraliser leurs données et à les utiliser.
+      </p>
+
+      <h2>Fonctionnalités principales</h2>
+      <ul>
+        <li>
+          Chaque joueur renseigne son champion pool dans un classement conçu
+          spécialement pour les équipes.
+        </li>
+        <li>
+          En se basant sur le champion pool, chaque joueur peut renseigner les
+          match-up de ses champions préférés.
+        </li>
+        <li>
+          Découvrez la création de compositions qui se basera sur les
+          champions-pool et match-up de chaque membre de l'équipe.
+        </li>
+      </ul>
+
+      <h2>Version alpha et phase de test</h2>
+      <p>
+        La Faille est actuellement en version test. Votre participation est
+        essentielle pour m'aider à améliorer la plateforme et à la rendre encore
+        plus performante. Vos retours et suggestions sont les bienvenus !
+      </p>
+
+      <h2>Testez La Faille dès maintenant</h2>
+      <p>
+        Je vous invite donc à tester la plateforme dans son état actuel et à
+        nous faire part de vos retours. Vous pouvez me contacter via Discord
+        [Brioche 🍞#2616].
+      </p>
+      <p>
+        Dans cette première version, vous êtes par défault au rôle de support,
+        les données des 4 autres rôles de l'équipe sont déjà renseignées pour
+        feindre le résultat final.
+      </p>
     </div>
   )
 }
