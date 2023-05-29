@@ -32,9 +32,6 @@ function CompositionValidation ({ onPrevious, picks, bans }) {
         [compositionId]: compositionData
       }
     })
-
-    // Redirection vers la page des compositions
-    return redirect('/compositions')
   }
 
   // Génère un ID unique pour la composition (à titre d'exemple)
@@ -72,9 +69,9 @@ function CompositionValidation ({ onPrevious, picks, bans }) {
       <div className='new-composition__buttons'>
         <button onClick={onPrevious}>Previous</button>
         <span className='new-composition__buttons-separator'></span>
-        <button onClick={handleComplete} disabled={compositionName === ''}>
+        <a href="/compositions" onClick={handleComplete} disabled={compositionName === ''}>
           Sauvegarder
-        </button>
+        </a>
       </div>
     </div>
   )

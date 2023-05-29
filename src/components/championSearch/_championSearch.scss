@@ -1,6 +1,7 @@
 .champion-search {
-    width: 365px;
-    height: min(850px, 100%);
+    max-width: 365px;
+    max-height: 850px;
+    overflow-y: auto;
     display: grid;
     grid-template-rows: auto 1fr;
     background-color: $white;

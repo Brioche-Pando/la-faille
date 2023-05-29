@@ -1,6 +1,6 @@
 .compositions {
-    height: 100vh;
-    padding-block: 8.5vh;
+    min-height: 100vh;
+    padding-block: 6vh;
     display: grid;
     grid-template-rows: auto 1fr;
     row-gap: 26px;
