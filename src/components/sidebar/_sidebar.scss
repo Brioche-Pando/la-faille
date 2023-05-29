@@ -42,13 +42,17 @@
     }
 
     &__item {
+        &:hover {
+            border-right: 2px solid $primary;
+        }
+
         &::marker {
             content: none;
         }
     }
 
     &__item + &__item {
-        margin-top: 12px;
+        margin-top: 24px;
     }
 
     &__link {
