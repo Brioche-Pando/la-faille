@@ -43,7 +43,7 @@ function compositionsPreview ({ storedCompositions }) {
         )
       ) : (
         <div className='compositions-preview__warning'>
-          <img src='./assets/img/emotes/Does_Not_Compute.webp' alt='' />
+          <img src='./assets/img/emotes/Does_Not_Compute.webp' alt='emote doest not compute' />
           <h1 className='compositions-preview__warning-title'>Vous n'avez aucune composition créée.</h1>
           <p className='compositions-preview__warning-desc'>
             Commence à créer maintenant et sauvegarde tes compositions pour plus

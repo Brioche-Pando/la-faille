@@ -1,11 +1,10 @@
 .matchup {
     &:not(.matchup--preview) {
-        width: 365px;
+        max-width: 365px;
+        width: 100%;
     }
 
     &--preview {
-        max-height: 350px;
-        overflow-y: auto;
         
         .matchup__header h2 {
             font-family: 'Spiegel';
