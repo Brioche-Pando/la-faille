@@ -47,9 +47,31 @@ const NewComposition = () => {
   }
 
   return (
-    <div>
+    <div className='new-composition'>
       {/* Affichage de l'étape en cours */}
-      <div>Step {step}</div>
+      <ul className='new-composition__breadcrumb'>
+        <li className='new-composition__breadcrumb-item'>
+          <div className='new-composition__breadcrumb-item__number'>1</div>
+          <div className='new-composition__breadcrumb-item__content'>
+            <p className='text-bold'>Pick</p>
+          </div>
+        </li>
+        <li className='new-composition__breadcrumb-separator'></li>
+        <li className='new-composition__breadcrumb-item'>
+          <div className='new-composition__breadcrumb-item__number'>2</div>
+          <div className='new-composition__breadcrumb-item__content'>
+            <p className='text-bold'>Ban</p>
+            <span className='small'>Optionnel</span>
+          </div>
+        </li>
+        <li className='new-composition__breadcrumb-separator'></li>
+        <li className='new-composition__breadcrumb-item'>
+          <div className='new-composition__breadcrumb-item__number'>3</div>
+          <div className='new-composition__breadcrumb-item__content'>
+            <p className='text-bold'>Validation</p>
+          </div>
+        </li>
+      </ul>
 
       {/* Affichage du composant correspondant à l'étape actuelle */}
       {step === 1 && (

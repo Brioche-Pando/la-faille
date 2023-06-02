@@ -1,0 +1,9 @@
+.button {
+    padding: 8px;
+    display: inline-flex;
+    gap: 8px;
+    background-color: $secondary;
+    color: $white;
+    text-decoration: none;
+    white-space: nowrap;
+}

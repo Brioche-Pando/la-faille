@@ -1,9 +1,9 @@
 .sidebar {
     height: 100vh;
     grid-area: sidebar;
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 99;
+    z-index: 9;
 
     &__inner {
         width: 100%;
@@ -15,7 +15,6 @@
             "logo"
             "nav"
             "settings";
-        position: absolute;
         background-color: $dark_background;
         color: $primary;
         transition: width 0.25s ease;
@@ -43,13 +42,17 @@
     }
 
     &__item {
+        &:hover {
+            border-right: 2px solid $primary;
+        }
+
         &::marker {
             content: none;
         }
     }
 
     &__item + &__item {
-        margin-top: 12px;
+        margin-top: 24px;
     }
 
     &__link {

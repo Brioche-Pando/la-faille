@@ -2,7 +2,7 @@
     font-family: "Beaufort for lol";
     font-style: normal;
     font-weight: 400;
-    src: local("Beaufort for lol"), url("../../fonts/BeaufortForLol/beaufortforlol-regular.otf") format("opentype");
+    src: local("Beaufort for lol"), url("./assets/fonts/BeaufortForLol/beaufortforlol-regular.otf") format("opentype");
 }
 
 @font-face {
@@ -10,14 +10,14 @@
     font-style: italic;
     font-weight: 400;
     src: local("Beaufort for lol Italic"),
-        url("../../fonts/BeaufortForLol/beaufortforlol-italic.otf") format("opentype");
+        url("./assets/fonts/BeaufortForLol/beaufortforlol-italic.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Beaufort for lol";
     font-style: normal;
     font-weight: 600;
-    src: local("Beaufort for lol Bold"), url("../../fonts/BeaufortForLol/beaufortforlol-bold.otf") format("opentype");
+    src: local("Beaufort for lol Bold"), url("./assets/fonts/BeaufortForLol/beaufortforlol-bold.otf") format("opentype");
 }
 
 @font-face {
@@ -25,5 +25,5 @@
     font-style: italic;
     font-weight: 600;
     src: local("Beaufort for lol Bold Italic"),
-        url("../../fonts/BeaufortForLol/beaufortforlol-bolditalic.otf") format("opentype");
+        url("./assets/fonts/BeaufortForLol/beaufortforlol-bolditalic.otf") format("opentype");
 }

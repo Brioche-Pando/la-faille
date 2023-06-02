@@ -15,8 +15,8 @@ function RoleButton ({ role, active, handleClick }) {
       onClick={() => onClick()}
     >
       <img
-        src={'src/assets/img/role_icons/' + role + '.svg'}
-        alt={'filtre pour' + role + ' lane'}
+        src={'/./assets/img/role_icons/' + role + '.svg'}
+        alt={'filtre pour ' + role + ' lane'}
         className='role-button__icon'
       />
     </button>

@@ -1,29 +1,13 @@
 .champion-pool {
-    height: min(850px, 100%);
-    padding-top: 8px;
-    display: grid;
-    grid-template-rows: auto 1fr 1fr 1fr 1fr;
-    row-gap: 8px;
-    background-color: $white;
-    box-shadow: $shadow_1;
-
+    flex: 1;
+    
     &__header {
-        justify-self: center;
+        padding-top: 8px;
         display: flex;
         gap: 8px;
     }
 
-    &__tier {
-        display: flex;
-        flex-direction: column;
-
-        &-label {
-            padding: 6px 12px;
-            background-color: $dark_background;
-            color: $white;
-            text-align: center;
-        }
-
+    &__rank {
         &-list {
             width: 100%;
             height: 100%;
@@ -32,45 +16,6 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-        }
-
-        &-item {
-            list-style: none;
-            position: relative;
-
-            &__remove {
-                width: 19px;
-                height: 19px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: absolute;
-                top: 0;
-                right: 0;
-                border: 1px solid $white;
-                border-radius: 25px;
-                background-color: $error;
-                color: $white;
-                cursor: pointer;
-                visibility: hidden;
-
-                &::before {
-                    content: "";
-                    width: 7px;
-                    height: 3px;
-                    background-color: $white;
-                }
-            }
-
-            &:hover {
-                .champion-pool__tier-item__remove {
-                    visibility: visible;
-                }
-            }
-
-            &--empty {
-                text-align: center;
-            }
         }
     }
 }

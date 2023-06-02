@@ -1,5 +1,13 @@
+@import 'global_components/tier-list.scss';
+@import 'global_components/search-modal.scss';
+@import 'global_components/button.scss';
+@import 'global_components/input.scss';
+
 @import '../../components/championIcon/championIcon.scss';
 @import '../../components/roleButton/roleButton.scss';
 @import '../../components/sidebar/sidebar.scss';
 @import '../../components/championSearch/championSearch.scss';
 @import '../../components/championPool/championPool.scss';
+@import '../../components/matchUp/matchUp.scss';
+
+@import '../../components/compositions/preview/compositionsPreview.scss';

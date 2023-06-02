@@ -10,60 +10,63 @@ function ChampionPoolTier ({
   handleChampionSelect
 }) {
   const handleDrop = event => {
-    if (editable) {
-      event.preventDefault()
-      const championId = event.dataTransfer.getData('championId')
-      const championSlug = event.dataTransfer.getData('championSlug')
+    if (!editable) {
+      return
+    }
+    event.preventDefault()
+    const championId = event.dataTransfer.getData('championId')
+    const championSlug = event.dataTransfer.getData('championSlug')
 
-      let championAlreadyExist = false
+    if (championId == '' || championSlug == '') {
+      return
+    }
 
-      for (const tierSlug in championPool) {
-        const championsInTier = championPool[tierSlug]
-        const foundChampion = championsInTier.find(
-          champion => champion.slug === championSlug
-        )
-        if (foundChampion) {
-          championAlreadyExist = foundChampion
-          break
-        }
+    let championAlreadyExist = false
+
+    for (const tierSlug in championPool) {
+      const championsInTier = championPool[tierSlug]
+      const foundChampion = championsInTier.find(
+        champion => champion.slug === championSlug
+      )
+      if (foundChampion) {
+        championAlreadyExist = foundChampion
+        break
+      }
+    }
+
+    // Si le champion n'est pas dans le champion pool
+    if (!championAlreadyExist) {
+      // Création du nouveau champion
+      const newChampion = {
+        id: championId,
+        slug: championSlug,
+        tier: tierSlug
       }
 
-      // Si le champion n'est pas dans le champion pool
-      if (!championAlreadyExist) {
-        // Création du nouveau champion
-        const newChampion = {
-          id: championId,
-          slug: championSlug,
-          tier: tierSlug
-        }
+      // Ajout à la liste de champions
+      const newChampionTabs = [...championPool[tierSlug], newChampion]
+      const newChampionPool = { ...championPool, [tierSlug]: newChampionTabs }
+      setChampionPool(newChampionPool)
 
-        // Ajout à la liste de champions
-        const newChampionTabs = [...championPool[tierSlug], newChampion]
-        const newChampionPool = { ...championPool, [tierSlug]: newChampionTabs }
-        setChampionPool(newChampionPool)
-
-        // Si il est déjà dans le champion pool
-      } else if (championAlreadyExist.tier !== tierSlug) {
-        // Suppression du champion de son ancien tier
-        const oldChampions = championPool[championAlreadyExist.tier].filter(
-          champion => champion.slug !== championSlug
-        )
-        const newChampionPool = {
-          ...championPool,
-          [championAlreadyExist.tier]: oldChampions
-        }
-
-        // Changement du tier du champion
-        const updatedChampion = { ...championAlreadyExist, tier: tierSlug }
-
-        // Ajout du champion à son nouveau tier
-        const newChampions = [...championPool[tierSlug], updatedChampion]
-        newChampionPool[tierSlug] = newChampions
-
-        setChampionPool(newChampionPool)
+      // Si il est déjà dans le champion pool
+    } else if (championAlreadyExist.tier !== tierSlug) {
+      // Suppression du champion de son ancien tier
+      const oldChampions = championPool[championAlreadyExist.tier].filter(
+        champion => champion.slug !== championSlug
+      )
+      const newChampionPool = {
+        ...championPool,
+        [championAlreadyExist.tier]: oldChampions
       }
-    } else {
-      return false
+
+      // Changement du tier du champion
+      const updatedChampion = { ...championAlreadyExist, tier: tierSlug }
+
+      // Ajout du champion à son nouveau tier
+      const newChampions = [...championPool[tierSlug], updatedChampion]
+      newChampionPool[tierSlug] = newChampions
+
+      setChampionPool(newChampionPool)
     }
   }
 
@@ -101,17 +104,19 @@ function ChampionPoolTier ({
 
   return (
     <div
-      className='champion-pool__tier'
+      className='champion-pool__rank tier-list__rank'
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
-      <p className='champion-pool__tier-label'>{tierName}</p>
-      <ul className='champion-pool__tier-list'>
+      <p className='champion-pool__rank-label tier-list__rank-label'>
+        {tierName}
+      </p>
+      <ul className='champion-pool__rank-list tier-list__rank-list'>
         {championPool[tierSlug].length ? (
           championPool[tierSlug].map(champion => (
             <li
               key={'champion-pool-' + champion.slug}
-              className='champion-pool__tier-item'
+              className='champion-pool__rank-item tier-list__rank-item'
             >
               <ChampionIcon
                 champion={champion}
@@ -125,17 +130,31 @@ function ChampionPoolTier ({
               {editable ? (
                 <button
                   onClick={() => handleRemoveChampion(champion.id)}
-                  className='champion-pool__tier-item__remove'
+                  className='champion-pool__rank-item__remove tier-list__rank-item__remove'
                 ></button>
               ) : (
                 ''
               )}
             </li>
           ))
-        ) : (
-          <li className='champion-pool__tier-item champion-pool__tier-item--empty'>
-            <img src='/src/assets/img/icons/move.svg' alt='move icon' />
+        ) : editable ? (
+          <li className='champion-pool__rank-item champion-pool__rank-item--empty tier-list__rank-item tier-list__rank-item--empty'>
+            <img src='/./assets/img/icons/move.svg' alt='move icon' />
             <p>Glisser-déposer vos champions dans cette catégorie</p>
+          </li>
+        ) : (
+          <li className='champion-pool__rank-item champion-pool__rank-item--empty tier-list__rank-item tier-list__rank-item--empty'>
+            <figure>
+              <img
+                src='assets/img/emotes/Bee_Sad.webp'
+                alt='click icon illustration'
+                className='matchup__selection-img'
+                width={85}
+              />
+              <figcaption>
+              Aucun champion n'a été renseigné dans cette catégorie
+              </figcaption>
+            </figure>
           </li>
         )}
       </ul>

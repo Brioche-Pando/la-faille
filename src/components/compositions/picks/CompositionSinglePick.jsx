@@ -26,38 +26,21 @@ const CompositionSinglePick = ({
   }
 
   return (
-    <div>
-      {isPreview && <p>Rappel des picks</p>}
-      <figure
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '8px',
-          fontWeight: 'bold',
-          margin: '0 0 16px'
-        }}
-      >
+    <div className='new-composition__chose-container'>
+      <figure className='new-composition__chose-title'>
         <img
-          src={`../src/assets/img/role_icons/${role}.svg`}
+          src={`.././assets/img/role_icons/${role}.svg`}
           alt={role}
           width={18}
           height={18}
-          style={{ margin: '7px' }}
         />
-        <figcaption style={{ textTransform: 'capitalize' }}>
+        <figcaption>
+          {isPreview && 'Pick '}
           {pseudoPlayer}
         </figcaption>
       </figure>
       <figure
-        style={{
-          cursor: 'pointer',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '16px',
-          margin: '0'
-        }}
+        className='new-composition__chose-button'
         onClick={() => {
           document
             .getElementById('modal-' + role)
@@ -67,12 +50,12 @@ const CompositionSinglePick = ({
         {selectedChampion ? (
           <img
             src={
-              '../src/assets/champion_icon/' + selectedChampion.slug + '.png'
+              '.././assets/champion_icon/' + selectedChampion.slug + '.png'
             }
             alt={selectedChampion.slug}
           />
         ) : (
-          <img src='../src/assets/img/icons/add.svg' alt='' />
+          <img src='.././assets/img/icons/add.svg' alt='' />
         )}
 
         <figcaption>
@@ -83,7 +66,12 @@ const CompositionSinglePick = ({
       </figure>
       {isPreview || (
         <div id={'modal-' + role} className='search-modal search-modal--hidden'>
-          <ChampionSearch handleChampionSelect={handleAddChampion} />
+          <div className='search-modal__inner'>
+            <ChampionSearch
+              isModal={true}
+              handleChampionSelect={handleAddChampion}
+            />
+          </div>
         </div>
       )}
     </div>

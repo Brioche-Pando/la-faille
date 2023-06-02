@@ -8,8 +8,13 @@ import Champion_Pool from './pages/ChampionPool'
 import Match_Up from './pages/MatchUp'
 import Compositions from './pages/Compositions'
 import NewComposition from './pages/NewComposition'
+import MobileTabletUnavailablePage from './pages/MobileTabletUnavailablePage';
+import NotFoundPage from './pages/NotFoundPage'
+
 
 function App () {
+  const isMobileOrTablet = window.matchMedia('(max-width: 768px)').matches
+
   const router = createBrowserRouter([
     {
       path: '/',
@@ -50,10 +55,26 @@ function App () {
           <NewComposition />
         </FullScreenLayout>
       )
+    },
+    {
+      path: '*',
+      element: (
+        <SidebarLayout>
+          <NotFoundPage />
+        </SidebarLayout>
+      )
     }
   ])
 
-  return <RouterProvider router={router} />
+  return (
+    <>
+      {isMobileOrTablet ? (
+        <MobileTabletUnavailablePage />
+      ) : (
+        <RouterProvider router={router} />
+      )}
+    </>
+  )
 }
 
 export default App
