@@ -59,14 +59,7 @@ function ChampionSearch ({ isModal = false, handleChampionSelect = null }) {
           />
         </div>
       </div>
-<<<<<<< HEAD
-      <div
-        className='champion-search__results'
-        style={{ display: 'flex', flexWrap: 'wrap' }}
-      >
-=======
       <div className='champion-search__results'>
->>>>>>> d6c2e3b20d9f56edd028bfbd422ec21497516fda
         {/* Afficher les champions filtrés */}
         {filteredChampions.length ? (
           filteredChampions.map(champion => (
