@@ -33,10 +33,10 @@ function ChampionSearch ({ hasFilter = true, handleChampionSelect = null }) {
   }
 
   return (
-    <div className='search'>
-      <div className='search__header'>
+    <div className='champion-search'>
+      <div className='champion-search__header'>
         {hasFilter && (
-          <div className='search__roles'>
+          <div className='champion-search__roles'>
             {roles.map(role => (
               <RoleButton
                 key={role}
@@ -47,7 +47,7 @@ function ChampionSearch ({ hasFilter = true, handleChampionSelect = null }) {
             ))}
           </div>
         )}
-        <div className='search__bar'>
+        <div className='champion-search__bar'>
           {/* Barre de recherche */}
           <input
             type='text'
@@ -57,7 +57,7 @@ function ChampionSearch ({ hasFilter = true, handleChampionSelect = null }) {
         </div>
       </div>
       <div
-        className='search__results'
+        className='champion-search__results'
         style={{ display: 'flex', flexWrap: 'wrap' }}
       >
         {/* Afficher les champions filtrés */}
